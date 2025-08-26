@@ -3,14 +3,14 @@ body {
   margin: 0;
   background: #ededed;
   color: #333;
-  /* min-height: 100vh; */
+  min-height: 100vh;
   overflow-y: auto;
 }
 
 .main-wrapper {
   display: grid;
-  grid-template-columns: 280px 1fr; /* 네비게이션 280px, 콘텐츠는 나머지 */
-  /* min-height: 100vh; */
+  grid-template-columns: /* 280px */ 1fr; /* 네비게이션 280px, 콘텐츠는 나머지 */
+  min-height: 100vh;
   gap: 0;
   background: #ededed;
 }
@@ -19,9 +19,9 @@ body {
 .content-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: auto;
   gap: 16px;
-  padding: 48px;
+  padding: 16px;
   background: #fff;
   min-height: 100vh;
   box-sizing: border-box;
@@ -37,7 +37,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0;
-  aspect-ratio: auto; /* 정사각형 유지 */
+  aspect-ratio: auto;
 }
 
 .content-grid .item img {
@@ -48,10 +48,11 @@ body {
 
 /* #content 기본 영역 */
 #content {
+  margin-left: 280px; /* 네비게이션 바의 너비만큼 여백 추가 */
   position: relative;
   background: #fff;   /* 회색 배경 보이지 않게 */
   min-height: 100vh; /* 내용 없을 때도 안정감 */
-  /* overflow: hidden; */ /* 겹친 .content-inner가 삐져나오지 않게 */
+  /* overflow: hidden;  /* 겹친 .content-inner가 삐져나오지 않게 */
 }
 
 /* 콘텐츠 교체 애니메이션 */
