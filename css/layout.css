@@ -8,6 +8,7 @@
   border-right: 2px solid #efefef;
   height: 100vh; /* 화면 전체 높이 */
   box-sizing: border-box;
+  width: 280px;
 
   /* 화면에 고정 */
   position: fixed;
