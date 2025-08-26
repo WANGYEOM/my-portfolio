@@ -4,23 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matthew Kim</title>
-  <link rel="stylesheet" href="style.css">
+  <base href="/" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
   <div class="main-wrapper">
     <aside class="left-nav">
-      <div class="logo">mat.2E</div>
+      <div class="logo">
+        <img src="assets/logo.svg" alt="mat.K" />
+      </div>
       <nav>
         <ul>
-          <li>wellbuy <span style="font-size:0.85em;opacity:0.7;">(identity)</span></li>
-          <li>? <span>(identity)</span></li>
-          <li>Tashu <span>(app)</span></li>
-          <li>immuone <span>(app)</span></li>
-          <li>Shanghai <span>(city branding)</span></li>
-          <li>Loop <span>(transportation)</span></li>
-          <li>LEGO <span>(editorial)</span></li>
-          <li>Naming Process <span>(thesis)</span></li>
-          <li>** <span>(typography)</span></li>
+          <li>
+            <a href="pages/wellbuy.html" class="nav-link">
+              wellbuy <span class="tag">(identity)</span>
+            </a>
+          </li>
+          <li>민주인권기념관 <span class="tag">(identity)</span></li>
+          <li>Tashu <span class="tag">(app)</span></li>
+          <li>
+            <a href="pages/immuone.html" class="nav-link">
+              immuone <span class="tag">(app)</span>
+            </a> 
+          </li>
+          <li>Shanghai <span class="tag">(city branding)</span></li>
+          <li>Loop <span class="tag">(transportation)</span></li>
+          <li>LEGO <span class="tag">(editorial)</span></li>
+          <li>Naming Process <span class="tag">(thesis)</span></li>
+          <li>** <span class="tag">(typography)</span></li>
         </ul>
       </nav>
       <div class="extra">
@@ -28,14 +41,32 @@
         MISC
       </div>
     </aside>
-    <main class="content-grid">
-      <div class="item"><img src="이미지1.jpg" alt="wellbuy" /></div>
-      <div class="item"><img src="이미지2.jpg" alt="immuone" /></div>
-      <div class="item"><img src="이미지3.jpg" alt="lego editorial" /></div>
-      <div class="item"><img src="이미지4.jpg" alt="loop transportation" /></div>
-      <!-- 실제 이미지 파일명과 alt값은 작업에 맞게 교체 -->
+    <main id="content">
+      <div class="content-inner active">
+        <div class="content-grid">
+          <!-- 초기 페이지 콘텐츠 -->
+          <div class="item">
+            <a href="pages/wellbuy.html" class="nav-link">
+                <img src="assets/project_01/project1.png" alt="wellbuy" />
+            </a>
+          </div>
+          <div class="item">
+            <a href="pages/immuone.html" class="nav-link">
+              <img src="assets/project_02/project2.png" alt="immuone" />
+            </a>
+          </div>
+          <div class="item">
+            <a href="pages/loop.html" class="nav-link">
+              <img src="assets/project_04/project4.png" alt="loop" />
+            </a>
+          </div>
+          <div class="item">
+            <a href="pages/lego.html" class="nav-link">
+              <img src="assets/project_03/project3.png" alt="lego" />
+            </a>
+        </div>
+      </div>
     </main>
   </div>
 </body>
-
 </html>
