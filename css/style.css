@@ -58,7 +58,7 @@ body {
 /* 콘텐츠 교체 애니메이션 */
 .content-inner {
   position: absolute;
-  top: 0;
+  top: 32px; /* 네비게이션 패딩과 동일하게 */
   left: 0;
   width: 100%;
   opacity: 0;
