@@ -2,26 +2,51 @@
 // SPA Navigation Script (app.js)
 // ---------------------------------------------
 
+const routes = {
+  '/': '/index.html',
+  '/wellbuy': '/pages/wellbuy.html',
+  '/democracy': '/pages/democracy.html',
+  '/tashu': '/pages/tashu.html',
+  '/immuone': '/pages/immuone.html',
+  '/shanghai-branding': '/pages/shanghai-branding.html',
+  '/loop': '/pages/loop.html',
+  '/lego': '/pages/lego.html',
+  '/naming-process': '/pages/naming-process.html',
+  '/about': '/pages/about.html',
+  '/others': '/pages/others.html'
+};
+
+// fade-in 적용 함수
+function applyFadeIn() {
+  const inner = document.querySelector('.content-inner');
+  if (inner) {
+    inner.classList.remove('fade-out');
+    // 다음 프레임에서 fade-in 추가
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        inner.classList.add('fade-in');
+      });
+    });
+  }
+}
+
 // [fn] 메인 컨텐츠 로드 함수
 // url: 불러올 주소
 // addToHistory: true면 pushState, false면 popstate 처리
 function loadContent(url, addToHistory = true, stateContent = null) {
   const content = document.querySelector('#content');
   const currentContent = content.querySelector('.content-inner');
-
-  // 기존 콘텐츠에 페이드 아웃 애니메이션 추가
+  // fade-out 적용 (기존 컨텐츠 숨김)
   if (currentContent) {
     currentContent.classList.add('fade-out');
     currentContent.classList.remove('fade-in');
   }
-
-  // 애니메이션이 끝난 후 새로운 콘텐츠 로드
+  // 400ms 후 새 컨텐츠 교체 및 fade-in 적용
   setTimeout(() => {
     if (stateContent) {
-      // [popstate] 히스토리에서 가져온 콘텐츠 사용
       content.innerHTML = stateContent;
+      applyFadeIn();
     } else {
-      // [fetch] 새로운 콘텐츠 로드
       fetch(url)
         .then(res => {
           if (!res.ok) throw new Error(`HTTP error ${res.status}`);
@@ -30,54 +55,45 @@ function loadContent(url, addToHistory = true, stateContent = null) {
         .then(html => {
           const parser = new DOMParser();
           const doc = parser.parseFromString(html, 'text/html');
-
-          // [content] 본문 영역 교체
           let newContent = doc.querySelector('#content').innerHTML;
-
-          // .content-inner가 없으면 추가
           if (!newContent.includes('content-inner')) {
             newContent = `<div class="content-inner">${newContent}</div>`;
           }
-
           content.innerHTML = newContent;
-
-          // [title] 문서 타이틀 변경
-          const newTitle = doc.querySelector('title');
-          if (newTitle) document.title = newTitle.innerText;
-
-          // [history] pushState 처리
-          if (addToHistory) {
-            history.pushState({ url, content: newContent }, '', url);
-          }
-        })
-        .catch(err => {
-          console.error(err);
+          applyFadeIn();
         });
     }
-
-    // 새 콘텐츠에 페이드 인 애니메이션 추가
-    const newContentInner = content.querySelector('.content-inner');
-    if (newContentInner) {
-      requestAnimationFrame(() => {
-        newContentInner.classList.add('fade-in');
-        newContentInner.classList.remove('fade-out');
-      });
+    // pushState 처리
+    if (addToHistory) {
+      history.pushState(null, '', url);
     }
-  }, 400); // 페이드 아웃 애니메이션 시간(0.4초)과 동일
+  }, 400); // 400ms는 style.css에서 지정한 transition 시간에 맞춤
 }
+
 
 // ---------------------------------------------
 // [event] 초기 페이지 상태 저장
 // 첫 진입 시 현재 content를 history에 등록
 // ---------------------------------------------
 window.addEventListener('DOMContentLoaded', () => {
-  const initialContent = document.querySelector('#content').innerHTML;
-  history.replaceState(
-    { url: location.href, content: initialContent },
-    '',
-    location.href
-  );
+  const path = location.pathname === '/' ? '/index.html' : window.location.pathname;
+  loadContent(path, false);
+  //const initialPath = location.pathname || '/index.html';
+  //loadContent(initialPath, false);
+
+  // 해시 관련 조건 다 제거
+
+  // 네비게이션 활성화 상태 초기화
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    // location.href 대신 pathname으로 비교해야 할 수 있음
+    if (link.pathname === location.pathname) {
+      link.classList.add('active');
+    }
+  });
 });
+
 
 // ---------------------------------------------
 // [event] 네비게이션 클릭 처리 (이벤트 위임)
@@ -103,21 +119,20 @@ window.addEventListener('popstate', e => {
   const content = document.querySelector('#content');
   const currentContent = content.querySelector('.content-inner');
 
-  // 기존 콘텐츠에 페이드 아웃 애니메이션 추가
   if (currentContent) {
     currentContent.classList.add('fade-out');
     currentContent.classList.remove('fade-in');
+    currentContent.classList.remove('active'); // active 제거
   }
 
-  // 애니메이션이 끝난 후 콘텐츠 복원
   setTimeout(() => {
     if (e.state && e.state.content) {
       content.innerHTML = e.state.content;
     } else {
-      loadContent(location.href, false);
+      loadContent(location.pathname, false);
+      return; // loadContent가 애니메이션까지 처리함
     }
 
-    // 새 콘텐츠에 페이드 인 애니메이션 추가
     const newContentInner = content.querySelector('.content-inner');
     if (newContentInner) {
       requestAnimationFrame(() => {
@@ -125,5 +140,35 @@ window.addEventListener('popstate', e => {
         newContentInner.classList.remove('fade-out');
       });
     }
-  }, 400); // 페이드 아웃 애니메이션 시간(0.4초)과 동일
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.pathname === location.pathname) {
+        link.classList.add('active');
+      }
+    });
+  }, 400);
+});
+
+
+
+
+
+// ---------------------------------------------
+// [fn] 페이지 맨 위로 부드럽게 스크롤
+// ---------------------------------------------
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}
+
+// ---------------------------------------------
+// [event] back-to-top 버튼 클릭 처리
+// ---------------------------------------------
+document.getElementById('back-to-top').addEventListener('click', e => {
+  e.preventDefault(); // 기본 동작 막기
+  scrollToTop(); // 페이지 맨 위로 이동
 });

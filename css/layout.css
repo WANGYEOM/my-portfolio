@@ -1,7 +1,7 @@
 /* 왼쪽 네비게이션 영역 */
 .left-nav {
   background: #fff;
-  padding: 48px 32px;
+  padding: 40px 32px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,6 +10,7 @@
   box-sizing: border-box;
   width: 280px;
 
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
   /* 화면에 고정 */
   position: fixed;
   top: 0;
@@ -20,7 +21,7 @@
 .left-nav .logo {
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 36px;
+  margin-bottom: 70px;
   letter-spacing: -1.5px;
 }
 
@@ -46,6 +47,14 @@
   opacity: 1;
 }
 
+.left-nav nav ul li a {
+  display: block;       /* a 태그를 블록 요소로 */
+  width: 100%;          /* li 가로 전체 차지 */
+  height: 100%;         /* li 세로 전체 차지 */
+  text-decoration: none; /* 기본 밑줄 제거 (원하면) */
+  color: inherit;        /* li 글자색을 그대로 상속 */
+}
+
 .left-nav nav ul .tag {
   font-size: 0.85em;
   opacity: 0.7;
@@ -57,10 +66,22 @@
   opacity: 0.8;
 }
 
-.left-nav nav ul li a {
-  display: block;       /* a 태그를 블록 요소로 */
-  width: 100%;          /* li 가로 전체 차지 */
-  height: 100%;         /* li 세로 전체 차지 */
-  text-decoration: none; /* 기본 밑줄 제거 (원하면) */
-  color: inherit;        /* li 글자색을 그대로 상속 */
+.left-nav .extra ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
+.left-nav .extra a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.left-nav .tag {
+  margin-top: 24px;
+  margin-bottom: 0px;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+
