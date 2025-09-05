@@ -9,6 +9,8 @@
   height: 100vh; /* 화면 전체 높이 */
   box-sizing: border-box;
   width: 280px;
+  max-height: 100vh;
+  overflow-y: auto; /* 세로 스크롤 가능 */
 
   font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
   /* 화면에 고정 */
@@ -70,6 +72,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-bottom: 10rem;
 }
 
 .left-nav .extra a {
