@@ -1,0 +1,10 @@
+.inner-page {
+  padding: 24px;
+}
+
+h1 {
+    font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+    font-weight: 300;
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}

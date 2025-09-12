@@ -1,0 +1,5 @@
+<script type="text/javascript">
+  // 현재 경로를 쿼리 스트링 형식으로 변환해서 index.html로 리디렉션
+  var path = window.location.pathname + window.location.search + window.location.hash;
+  window.location.href = '/?' + 'p=' + encodeURIComponent(path);
+</script>

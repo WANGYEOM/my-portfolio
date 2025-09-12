@@ -1,0 +1,90 @@
+/* 왼쪽 네비게이션 영역 */
+.left-nav {
+  background: #fff;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-right: 1px solid #efefef;
+  height: 100vh; /* 화면 전체 높이 */
+  box-sizing: border-box;
+  width: 280px;
+  max-height: 100vh;
+  overflow-y: auto; /* 세로 스크롤 가능 */
+
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  /* 화면에 고정 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10; /* 다른 요소 위에 표시 */
+}
+
+.left-nav .logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 70px;
+  letter-spacing: -1.5px;
+}
+
+.logo img, .logo svg {
+  width: 138px;   /* 원하는 크기로 설정 */
+  height: auto;
+  display: block;
+}
+
+.left-nav nav {
+  margin-bottom: 48px;
+}
+
+.left-nav nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.left-nav nav ul li {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  opacity: 1;
+}
+
+.left-nav nav ul li a {
+  display: block;       /* a 태그를 블록 요소로 */
+  width: 100%;          /* li 가로 전체 차지 */
+  height: 100%;         /* li 세로 전체 차지 */
+  text-decoration: none; /* 기본 밑줄 제거 (원하면) */
+  color: inherit;        /* li 글자색을 그대로 상속 */
+}
+
+.left-nav nav ul .tag {
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+.left-nav .extra {
+  margin-top: auto;
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
+
+.left-nav .extra ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10rem;
+}
+
+.left-nav .extra a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.left-nav .tag {
+  margin-top: 24px;
+  margin-bottom: 0px;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+
