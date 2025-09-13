@@ -1,150 +1,46 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matthew Kim</title>
-  <base href="/" />  <!-- GitHub Pages 에서는 /my-portfolio/ 를 베이스 링크로.  -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/inner.css">
-  <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
-  <script src="app.js" defer></script>
-  <script src="imagesLoading.js" defer></script>
-</head>
-<body>
-  <div class="main-wrapper">
-    <nav class="left-nav">
-      <div class="logo">
-        <a href="index.html">
-          <img src="assets/logo.svg" alt="mat.K" />
-        </a>
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <a href="pages/wellbuy.html" class="nav-link">
-              wellbuy <span class="tag">(identity)</span>
-            </a>
-          </li>
-          <li>
-            <a href="pages/democracy.html" class="nav-link">
-              민주인권기념관 <span class="tag">(identity)</span>
-            </a>
-          </li>
-          <li>
-            <a href="pages/tashu.html" class="nav-link">
-              Tashu <span class="tag">(app)</span>
-            </a>
-          </li>
-          <li>
-            <a href="pages/immuone.html" class="nav-link">
-              immuone <span class="tag">(app)</span>
-            </a> 
-          </li>
-          <li>
-            <a href="pages/shanghai-branding.html" class="nav-link">
-             Shanghai <span class="tag">(city branding)</span>
-            </a>
-          </li>
-          <li>
-            <a href="pages/loop.html" class="nav-link">
-              Loop <span class="tag">(transportation)</span>
-            </a>
-          </li>
-          <li>
-            <a href="pages/lego.html" class="nav-link">
-              LEGO <span class="tag">(editorial)</span>
-            </a>
-          </li>
-          <li>
-            <a href="pages/naming-process.html" class="nav-link">
-              Naming Process <span class="tag">(thesis)</span>
-            </a>
-          </li>
-          <li>** <span class="tag">(typography)</span></li>
-        </ul>
-      </nav>
-      <div class="extra">
-        <ul>
-          <li>
-              <a href="pages/about.html" class="nav-link">
-              ABOUT 
-              </a>
-          </li> 
-          <li>
-              <a href="pages/others.html" class="nav-link">
-              MISC
-              </a>
-          </li>
-        </ul>
-        <span class="tag">ⓒ Mat.K 2025</br>all rights reserved</span>
-      </div>
-    </nav>
-    <main id="content">
-      <div class="content-inner">
-        <div class="content-grid">
-          <!-- 초기 페이지 콘텐츠 -->
-          <div>
-          </div>
-          <div class="top">
-            <div style="flex:1;">Matthew Wangyeom Kim</div>
-            <div style="flex:1;">Brand Designer</div>
-          </div>
-          <div class="item">
-            <a href="pages/wellbuy.html" class="nav-link">
-                <img src="assets/project_01/OuterBanner.png" alt="wellbuy" />
-            </a>
-          </div>
-          <div class="item">
-            <a href="pages/immuone.html" class="nav-link">
-              <img src="assets/project_02/project2.jpg" alt="immuone" />
-            </a>
-          </div>
-          <div class="item">
-            <a href="pages/naming-process.html" class="nav-link">
-              <img src="assets/project_04/namingImages01.png" alt="naming-process" />
-            </a>
-          </div>
-          <div class="item">
-            <a href="pages/lego.html" class="nav-link">
-              <img src="assets/project_03/project3.jpg" alt="lego" />
-            </a>
-          </div>
-          <div class="item">
-            <a href="pages/lego.html" class="nav-link">
-              <img src="assets/project_03/project3.jpg" alt="lego" />
-            </a>
-          </div>
-          <div class="item">
-            <a href="pages/lego.html" class="nav-link">
-              <img src="assets/project_03/project3.jpg" alt="lego" />
-            </a>
-          </div>
-          <div class="item">
-            <a href="pages/lego.html" class="nav-link">
-              <img src="assets/project_03/project3.jpg" alt="lego" />
-            </a>
-          </div>
-      </div>
-    </main>
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="contact-info">
-          <span class="arrow-up">
-            <a href="#" id="back-to-top">
-              <img src="assets/arrow.svg" alt="back-to-top" />
-            </a>
-          </span>
-          <span>
-            <a href="mailto:matthewkim90162@gmail.com">matthewkim90162@gmail.com</a>
-          </span>
-          <span>
-            <a href="tel:+821040857100">+821040857100</a>
-          </span>
-        </div>
-      </div>
-    </footer>
+---
+layout: default
+title: Matthew Kim
+---
+<div class="content-grid">
+  <div></div>
+  <div class="top">
+    <div style="flex: 1;">Matthew Wangyeom Kim</div>
+    <div style="flex: 1;">Brand Designer</div>
   </div>
-</body>
-</html>
+  <div class="item">
+    <a href="{{ '/pages/wellbuy.html' | relative_url }}" class="nav-link">
+      <img src="{{ '/assets/project_01/project01.jpg' | relative_url }}" alt="wellbuy" />
+    </a>
+  </div>
+  <div class="item">
+    <a href="{{ '/pages/immuone.html' | relative_url }}" class="nav-link">
+      <img src="{{ '/assets/project_02/project2.jpg' | relative_url }}" alt="immuone" />
+    </a>
+  </div>
+  <div class="item">
+    <a href="{{ '/pages/naming-process.html' | relative_url }}" class="nav-link">
+      <img src="{{ '/assets/naming/namingImages01.png' | relative_url }}" style="object-fit: contain;" alt="naming-process" />
+    </a>
+  </div>
+  <div class="item">
+    <a href="{{ '/pages/lego.html' | relative_url }}" class="nav-link">
+      <img src="{{ '/assets/project_03/project3.jpg' | relative_url }}" alt="lego" />
+    </a>
+  </div>
+  <div class="item">
+    <a href="{{ '/pages/lego.html' | relative_url }}" class="nav-link">
+      <img src="{{ '/assets/project_03/project3.jpg' | relative_url }}" alt="lego" />
+    </a>
+  </div>
+  <div class="item">
+    <a href="{{ '/pages/lego.html' | relative_url }}" class="nav-link">
+      <img src="{{ '/assets/project_03/project3.jpg' | relative_url }}" alt="lego" />
+    </a>
+  </div>
+  <div class="item">
+    <a href="{{ '/pages/lego.html' | relative_url }}" class="nav-link">
+      <img src="{{ '/assets/project_03/project3.jpg' | relative_url }}" alt="lego" />
+    </a>
+  </div>
+</div>

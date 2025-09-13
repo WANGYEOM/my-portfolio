@@ -1,0 +1,7 @@
+title: Matthew Kim
+description: Portfolio
+url: https://wangyeom.github.io # the base hostname & protocol for your site
+baseurl: "/my-portfolio" # project page subpath
+
+# Keep existing file paths and extensions
+permalink: none

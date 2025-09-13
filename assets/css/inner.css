@@ -1,0 +1,53 @@
+.inner-page {
+  padding: 24px;
+}
+
+h1 {
+    font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.6;
+    margin: 0 0 16px;
+}
+
+p1 {
+    font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.description {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
+    margin-top: 64px;
+    padding: 64px;
+}
+
+/* Naming Process: 2-column grid, no side padding */
+.gallery-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0;
+}
+
+.gallery-wrap .img {
+  width: 100%;
+  height: auto; /* override global .img height */
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .gallery-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 콘텐츠 영역: 공백 기준 줄바꿈 적용 */
+.content-inner,
+.content-inner * {
+  word-break: keep-all;
+  overflow-wrap: normal;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/layout.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/inner.css' | relative_url }}">
+  <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
+</head>
+<body>
+  <div class="main-wrapper">
+    <nav class="left-nav">
+      <div class="logo">
+        <a href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="{{ '/pages/wellbuy.html' | relative_url }}" class="nav-link">
+              wellbuy <span class="tag">(identity)</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ '/pages/democracy.html' | relative_url }}" class="nav-link">
+              민주인권기념관 <span class="tag">(identity)</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ '/pages/tashu.html' | relative_url }}" class="nav-link">
+              Tashu <span class="tag">(app)</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ '/pages/immuone.html' | relative_url }}" class="nav-link">
+              immuone <span class="tag">(app)</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ '/pages/shanghai-branding.html' | relative_url }}" class="nav-link">
+              Shanghai <span class="tag">(city branding)</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ '/pages/loop.html' | relative_url }}" class="nav-link">
+              Loop <span class="tag">(transportation)</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ '/pages/lego.html' | relative_url }}" class="nav-link">
+              LEGO <span class="tag">(editorial)</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ '/pages/naming-process.html' | relative_url }}" class="nav-link">
+              Naming Process <span class="tag">(thesis)</span>
+            </a>
+          </li>
+          <li>** <span class="tag">(typography)</span></li>
+        </ul>
+      </nav>
+      <div class="extra">
+        <ul>
+          <li>
+            <a href="{{ '/about.html' | relative_url }}" class="nav-link">ABOUT</a>
+          </li>
+          <li>
+            <a href="{{ '/pages/others.html' | relative_url }}" class="nav-link">MISC</a>
+          </li>
+        </ul>
+        <span class="tag">ⓒ Mat.K 2025</br>all rights reserved</span>
+      </div>
+    </nav>
+
+    <main id="content">
+      <div class="content-inner fade-in">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="contact-info">
+          <span class="arrow-up">
+            <a href="#" id="back-to-top">
+              <img src="{{ '/assets/arrow.svg' | relative_url }}" alt="back-to-top" />
+            </a>
+          </span>
+          <span>
+            <a href="mailto:matthewkim90162@gmail.com">matthewkim90162@gmail.com</a>
+          </span>
+          <span>
+            <a href="tel:+821040857100">+821040857100</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
