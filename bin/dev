@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Live-reload Jekyll server with local baseurl overrides
+jekyll serve --livereload --config _config.yml,_config.dev.yml "$@"
