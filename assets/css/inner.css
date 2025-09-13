@@ -55,5 +55,5 @@ p1 {
     margin-bottom: 24px;
     padding: 16px;               /* 모바일에 맞춘 여백 */
   }
-  .description h1 { margin-bottom: 8px; }
+  .description p1 { margin-bottom: 8px; }
 }
