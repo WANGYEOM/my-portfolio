@@ -12,11 +12,6 @@
 <body class="{% if page.home %}home{% endif %}">
   <div class="main-wrapper">
     <header class="mobile-header">
-      <div class="logo">
-        <a href="{{ '/' | relative_url }}">
-          <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K" />
-        </a>
-      </div>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-drawer">
         <span class="bar"></span>
       </button>
@@ -30,9 +25,6 @@
       </div>
       <nav>
         <ul>
-          <li class="mobile-only">
-            <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
-          </li>
           <li>
             <a href="{{ '/pages/wellbuy.html' | relative_url }}" class="nav-link">
               wellbuy <span class="tag">(identity)</span>
