@@ -117,6 +117,7 @@
     height: 80%;
     width: auto;
     display: block;
+    margin-right: 8px;
   }
 
   /* 햄버거가 로고 왼쪽에 오도록 순서 보장 (로고 표시할 때 대비) */
