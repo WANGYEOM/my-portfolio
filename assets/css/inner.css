@@ -22,6 +22,7 @@ p1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
     margin-top: 64px;
+    margin-bottom: 64px;
     padding: 64px;
 }
 
