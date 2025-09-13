@@ -96,38 +96,34 @@
   .mobile-header {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* 기본: 햄버거를 왼쪽 정렬 */
-    gap: 12px;
+    justify-content: flex-start; /* 햄버거와 로고를 좌측 정렬 */
+    gap: 8px;
     position: sticky;
     top: 0;
     z-index: 9;
     background: #fff;
-    padding: 12px 16px;
+    height: 56px;           /* 헤더 높이 고정 */
+    padding: 0 12px;        /* 고정 높이 내 패딩 조정 */
     border-bottom: 1px solid #efefef;
   }
 
-  /* 요청: 모바일에서는 헤더 로고 비표시 */
+  /* 모바일 기본: 헤더 로고 숨김 */
   .mobile-header .logo { display: none; }
-  /* 필요 시 다시 보이게 할 때 크기도 축소됨 */
-  .mobile-header .logo img,
-  .mobile-header .logo svg { width: 96px; height: auto; display: block; }
+  /* 홈에서 보일 때 크기: 헤더 높이의 80% */
+  .home .mobile-header .logo { display: block; }
+  .home .mobile-header .logo img,
+  .home .mobile-header .logo svg {
+    height: 80%;
+    width: auto;
+    display: block;
+  }
 
   /* 햄버거가 로고 왼쪽에 오도록 순서 보장 (로고 표시할 때 대비) */
   .mobile-header .nav-toggle { order: 0; }
   .mobile-header .logo { order: 1; }
 
-  /* 홈(메인) 페이지에서는 로고 표시: 햄버거(왼쪽) ↔ 로고(오른쪽) */
-  .home .mobile-header { justify-content: space-between; }
-  .home .mobile-header .logo {
-    display: block;          /* 홈에서만 보이도록 */
-    flex: 1 1 auto;
-    text-align: right;       /* 오른쪽 정렬 */
-  }
-  .home .mobile-header .logo img,
-  .home .mobile-header .logo svg {
-    width: 80%;              /* 메뉴 영역의 80% */
-    height: auto;
-  }
+  /* 사이드 네비게이션: 모바일에서는 로고 숨김 (데스크톱은 그대로) */
+  .left-nav .logo { display: none; }
 
   .nav-toggle { 
     background: none; border: 0; padding: 0; margin: 0;
