@@ -108,7 +108,7 @@
   }
 
   /* 모바일 기본: 헤더 로고 숨김 */
-  .mobile-header .logo { display: none; }
+  .mobile-header .logo { display: block; }
   /* 홈에서 보일 때 크기: 헤더 높이의 80% */
   .home .mobile-header .logo { display: block; }
   .home .mobile-header .logo img,
