@@ -11,7 +11,18 @@
 </head>
 <body>
   <div class="main-wrapper">
-    <nav class="left-nav">
+    <header class="mobile-header">
+      <div class="logo">
+        <a href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K" />
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-drawer">
+        <span class="bar"></span>
+      </button>
+    </header>
+    <div class="nav-overlay"></div>
+    <nav class="left-nav" id="mobile-drawer">
       <div class="logo">
         <a href="{{ '/' | relative_url }}">
           <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K" />
@@ -99,5 +110,31 @@
       </div>
     </footer>
   </div>
+  <script>
+    (function () {
+      const body = document.body;
+      const toggle = document.querySelector('.nav-toggle');
+      const overlay = document.querySelector('.nav-overlay');
+      const links = document.querySelectorAll('.left-nav a');
+
+      const open = () => {
+        body.classList.add('nav-open');
+        if (toggle) toggle.setAttribute('aria-expanded', 'true');
+      };
+      const close = () => {
+        body.classList.remove('nav-open');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      };
+
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          if (body.classList.contains('nav-open')) close(); else open();
+        });
+      }
+      if (overlay) overlay.addEventListener('click', close);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+      links.forEach((a) => a.addEventListener('click', close));
+    })();
+  </script>
 </body>
 </html>

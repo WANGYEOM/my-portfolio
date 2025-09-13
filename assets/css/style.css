@@ -159,3 +159,30 @@ body {
   height: 24px;
   vertical-align: -3px;
 }
+
+/* 모바일(<=768px)에서: 콘텐츠/푸터 좌측 여백 제거 + 푸터 2줄 레이아웃 */
+@media (max-width: 768px) {
+  #content { margin-left: 0; }
+  .footer { margin-left: 0; }
+
+  .contact-info {
+    display: grid;
+    grid-template-columns: 24px 1fr; /* 아이콘, 텍스트 */
+    column-gap: 12px;
+    row-gap: 8px;
+    align-items: center;
+  }
+  .contact-info .arrow-up { /* 아이콘이 세로로 두 줄 차지 */
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    display: flex;
+    align-items: center;
+  }
+  .contact-info span:nth-child(2) { /* 이메일 */
+    grid-column: 2; grid-row: 1;
+  }
+  .contact-info span:nth-child(3) { /* 전화 */
+    grid-column: 2; grid-row: 2;
+  }
+  .footer a { height: auto; vertical-align: baseline; }
+}
