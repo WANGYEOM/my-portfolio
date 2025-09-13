@@ -57,9 +57,4 @@ p1 {
   .description h1 { margin-bottom: 8px; }
 }
 
-/* 콘텐츠 영역: 공백 기준 줄바꿈 적용 */
-.content-inner,
-.content-inner * {
-  word-break: keep-all;
-  overflow-wrap: normal;
-}
+/* (전역으로 이동: assets/css/style.css) */
