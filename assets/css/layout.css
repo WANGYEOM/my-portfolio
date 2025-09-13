@@ -90,6 +90,7 @@
 /* 기본적으로 모바일 전용 요소 숨김 */
 .mobile-header,
 .nav-overlay { display: none; }
+.mobile-only { display: none; }
 
 /* 모바일(<=768px)에서: 상단 헤더 + 오프캔버스 네비게이션 */
 @media (max-width: 768px) {
@@ -164,4 +165,7 @@
     z-index: 8;
   }
   body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
+
+  /* 모바일 전용 항목 노출 */
+  .left-nav .mobile-only { display: list-item; }
 }
