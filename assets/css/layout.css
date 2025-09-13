@@ -96,7 +96,8 @@
   .mobile-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start; /* 햄버거를 왼쪽 정렬 */
+    gap: 12px;
     position: sticky;
     top: 0;
     z-index: 9;
@@ -105,8 +106,15 @@
     border-bottom: 1px solid #efefef;
   }
 
+  /* 요청: 모바일에서는 헤더 로고 비표시 */
+  .mobile-header .logo { display: none; }
+  /* 필요 시 다시 보이게 할 때 크기도 축소됨 */
   .mobile-header .logo img,
-  .mobile-header .logo svg { width: 120px; height: auto; display: block; }
+  .mobile-header .logo svg { width: 96px; height: auto; display: block; }
+
+  /* 햄버거가 로고 왼쪽에 오도록 순서 보장 (로고 표시할 때 대비) */
+  .mobile-header .nav-toggle { order: 0; }
+  .mobile-header .logo { order: 1; }
 
   .nav-toggle { 
     background: none; border: 0; padding: 0; margin: 0;
@@ -148,4 +156,3 @@
   }
   body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 }
-
