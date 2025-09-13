@@ -158,6 +158,6 @@
   .mobile-only { display: block; }
 
   /* 모바일 메인 전용 로고 스타일 */
-  .mobile-home-logo { padding: 12px 16px; }
-  .mobile-home-logo img { width: 138px; height: auto; display: block; }
+  .mobile-home-logo { padding: 0; }
+  .mobile-home-logo img { width: 20px; height: auto; display: block; }
 }
