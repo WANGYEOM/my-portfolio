@@ -2,6 +2,14 @@
   padding: 24px;
 }
 
+.description {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
+    margin-top: 64px;
+    margin-bottom: 64px;
+    padding: 64px;
+}
+
 h1 {
     font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
     font-weight: 400;
@@ -16,14 +24,6 @@ p1 {
     font-size: 1.25rem;
     line-height: 1.6;
     margin-bottom: 16px;
-}
-
-.description {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
-    margin-top: 64px;
-    margin-bottom: 64px;
-    padding: 64px;
 }
 
 /* Naming Process: 2-column grid, no side padding */
