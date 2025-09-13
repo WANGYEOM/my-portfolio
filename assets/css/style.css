@@ -45,7 +45,7 @@ body {
   gap: 16px;
   background: #fff;
   flex: 1;
-  font-size: 1rem;
+  font-size: 1em;
   margin-bottom: 0px;
   box-sizing: border-box;
 }
@@ -55,7 +55,7 @@ body {
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 4 / 3; /* 박스 비율 유지 */
+  aspect-ratio: 5 / 3; /* 박스 비율 유지 */
 }
 
 .content-grid .item img {
@@ -181,6 +181,7 @@ body {
   .contact-info span:nth-child(3) { grid-column: 2; grid-row: 2; }
   .contact-info span { text-align: left; }
   .footer a { height: auto; vertical-align: baseline; }
+  .top {display: grid;}
 }
 
 /* 콘텐츠 영역: 공백 기준 줄바꿈 적용 (전역) */
