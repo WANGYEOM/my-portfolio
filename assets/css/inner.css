@@ -38,6 +38,7 @@ p1 {
   height: auto; /* override global .img height */
   display: block;
   object-fit: cover;
+  outline: 1px solid rgba(0, 0, 0, 0.1); /* 이미지 바깥쪽 라인 */
 }
 
 @media (max-width: 768px) {
