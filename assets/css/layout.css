@@ -114,9 +114,6 @@
   .mobile-header .nav-toggle { order: 0; }
   .mobile-header .logo { order: 1; }
 
-  /* 사이드 네비게이션: 모바일에서는 로고 숨김 (데스크톱은 그대로) */
-  .left-nav .logo { display: none; }
-
   .nav-toggle { 
     background: none; border: 0; padding: 0; margin: 0;
     width: 36px; height: 36px; cursor: pointer;
