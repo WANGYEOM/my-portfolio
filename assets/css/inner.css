@@ -46,6 +46,17 @@ p1 {
   }
 }
 
+/* Mobile: description single column and tighter spacing */
+@media (max-width: 768px) {
+  .description {
+    display: block;              /* 두 컬럼 해제 */
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 16px;               /* 모바일에 맞춘 여백 */
+  }
+  .description h1 { margin-bottom: 8px; }
+}
+
 /* 콘텐츠 영역: 공백 기준 줄바꿈 적용 */
 .content-inner,
 .content-inner * {
