@@ -96,7 +96,7 @@
   .mobile-header {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* 햄버거를 왼쪽 정렬 */
+    justify-content: flex-start; /* 기본: 햄버거를 왼쪽 정렬 */
     gap: 12px;
     position: sticky;
     top: 0;
@@ -115,6 +115,19 @@
   /* 햄버거가 로고 왼쪽에 오도록 순서 보장 (로고 표시할 때 대비) */
   .mobile-header .nav-toggle { order: 0; }
   .mobile-header .logo { order: 1; }
+
+  /* 홈(메인) 페이지에서는 로고 표시: 햄버거(왼쪽) ↔ 로고(오른쪽) */
+  .home .mobile-header { justify-content: space-between; }
+  .home .mobile-header .logo {
+    display: block;          /* 홈에서만 보이도록 */
+    flex: 1 1 auto;
+    text-align: right;       /* 오른쪽 정렬 */
+  }
+  .home .mobile-header .logo img,
+  .home .mobile-header .logo svg {
+    width: 80%;              /* 메뉴 영역의 80% */
+    height: auto;
+  }
 
   .nav-toggle { 
     background: none; border: 0; padding: 0; margin: 0;

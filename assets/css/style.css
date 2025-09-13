@@ -184,5 +184,6 @@ body {
   .contact-info span:nth-child(3) { /* 전화 */
     grid-column: 2; grid-row: 2;
   }
+  .contact-info span { text-align: left; }
   .footer a { height: auto; vertical-align: baseline; }
 }

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/inner.css' | relative_url }}">
   <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
 </head>
-<body>
+<body class="{% if page.path == 'index.html' %}home{% endif %}">
   <div class="main-wrapper">
     <header class="mobile-header">
       <div class="logo">
