@@ -157,35 +157,5 @@
   /* 모바일 전용 항목 노출 */
   .mobile-only { display: block; }
 
-  /* 홈 전용: 모바일 헤더 로고 띠 */
-  .mobile-header .logo-belt {
-    flex: 1 1 auto;
-    height: 75%; /* 헤더 높이의 75% */
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    margin-left: 4px; /* 햄버거와 약간의 여백 */
-    pointer-events: none; /* 상호작용 방지 */
-    /* 양 끝 페이드 (mask) */
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0, #000 24px, #000 calc(100% - 24px), rgba(0,0,0,0) 100%);
-            mask-image: linear-gradient(to right, rgba(0,0,0,0) 0, #000 24px, #000 calc(100% - 24px), rgba(0,0,0,0) 100%);
-  }
-
-  .mobile-header .logo-belt-track {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    gap: 20px;
-    will-change: transform;
-  }
-
-  .mobile-header .logo-belt img,
-  .mobile-header .logo-belt svg {
-    height: 100%;
-    width: auto;
-    display: block;
-    filter: grayscale(1) brightness(0.5); /* 회색 계열 */
-    opacity: 0.9;
-  }
+  /* 로고 벨트 제거됨 */
 }
