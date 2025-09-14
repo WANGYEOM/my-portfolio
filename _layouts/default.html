@@ -15,6 +15,13 @@
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-drawer">
         <span class="bar"></span>
       </button>
+      {% if page.home %}
+      <div class="logo-belt" aria-hidden="true">
+        <div class="logo-belt-track">
+          <img src="{{ '/assets/logo.svg' | relative_url }}" alt="" />
+        </div>
+      </div>
+      {% endif %}
     </header>
     <div class="nav-overlay"></div>
     <nav class="left-nav" id="mobile-drawer">
@@ -131,5 +138,6 @@
       links.forEach((a) => a.addEventListener('click', close));
     })();
   </script>
+  <script src="{{ '/assets/js/logo-belt.js' | relative_url }}"></script>
 </body>
 </html>
