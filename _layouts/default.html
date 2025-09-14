@@ -11,79 +11,7 @@
 </head>
 <body class="{% if page.home %}home {% endif %}{% if page.url contains '/pages/about' or page.title == 'About' %}about{% endif %}">
   <div class="main-wrapper">
-    <header class="mobile-header">
-      <a class="logo" href="{{ '/' | relative_url }}" aria-label="Go to home">
-        <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K" />
-      </a>
-      <nav class="top-links" aria-label="Primary">
-        <a href="#" id="work-link" class="top-link">WORK</a>
-        <a href="{{ '/pages/about.html' | relative_url }}" class="top-link" id="about-link">ABOUT</a>
-      </nav>
-    </header>
-    <div class="nav-overlay"></div>
-    <nav class="left-nav" id="mobile-drawer">
-      <div class="logo">
-        <a href="{{ '/' | relative_url }}">
-          <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K" />
-        </a>
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <a href="{{ '/pages/wellbuy.html' | relative_url }}" class="nav-link">
-              wellbuy <span class="tag">(identity)</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ '/pages/democracy.html' | relative_url }}" class="nav-link">
-              민주인권기념관 <span class="tag">(identity)</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ '/pages/tashu.html' | relative_url }}" class="nav-link">
-              Tashu <span class="tag">(app)</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ '/pages/immuone.html' | relative_url }}" class="nav-link">
-              immuone <span class="tag">(app)</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ '/pages/shanghai-branding.html' | relative_url }}" class="nav-link">
-              Shanghai <span class="tag">(city branding)</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ '/pages/loop.html' | relative_url }}" class="nav-link">
-              Loop <span class="tag">(transportation)</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ '/pages/lego.html' | relative_url }}" class="nav-link">
-              LEGO <span class="tag">(editorial)</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ '/pages/naming-process.html' | relative_url }}" class="nav-link">
-              Naming<span class="tag">(thesis)</span>
-            </a>
-          </li>
-          <li>** <span class="tag">(typography)</span></li>
-        </ul>
-      </nav>
-      <div class="extra">
-        <ul>
-          <li>
-            <a href="{{ '/pages/about.html' | relative_url }}" class="nav-link">ABOUT</a>
-          </li>
-          <li>
-            <a href="{{ '/pages/others.html' | relative_url }}" class="nav-link">MISC</a>
-          </li>
-        </ul>
-        <span class="tag">ⓒ Mat.K 2025</br>all rights reserved</span>
-      </div>
-    </nav>
+    {% include header.html %}
 
     <main id="content">
       <div class="content-inner fade-in">
@@ -91,79 +19,8 @@
       </div>
     </main>
 
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="contact-info">
-          <span class="arrow-up">
-            <a href="#" id="back-to-top">
-              <img src="{{ '/assets/arrow.svg' | relative_url }}" alt="back-to-top" />
-            </a>
-          </span>
-          <span>
-            <a href="mailto:matthewkim90162@gmail.com">matthewkim90162@gmail.com</a>
-          </span>
-          <span>
-            <a href="tel:+821040857100">+821040857100</a>
-          </span>
-        </div>
-      </div>
-    </footer>
+    {% include footer.html %}
   </div>
-  <script>
-    (function () {
-      const body = document.body;
-      const overlay = document.querySelector('.nav-overlay');
-      const links = document.querySelectorAll('.left-nav a');
-      const workLink = document.getElementById('work-link');
-
-      const open = () => {
-        body.classList.add('nav-open');
-        body.classList.remove('hide-header');
-      };
-      const close = () => {
-        body.classList.remove('nav-open');
-      };
-
-      if (workLink) {
-        workLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          if (body.classList.contains('nav-open')) close(); else open();
-        });
-      }
-      if (overlay) overlay.addEventListener('click', close);
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-      links.forEach((a) => a.addEventListener('click', close));
-
-      // Mobile subpages: hide header on scroll down, show on scroll up
-      const isHome = body.classList.contains('home');
-      const mq = window.matchMedia('(max-width: 768px)');
-      let lastY = window.scrollY;
-      let ticking = false;
-      function onScroll() {
-        if (!mq.matches || isHome || body.classList.contains('nav-open')) return;
-        const y = window.scrollY;
-        const delta = y - lastY;
-        // Near top always show
-        if (y < 10) {
-          body.classList.remove('hide-header');
-          lastY = y;
-          return;
-        }
-        if (delta > 4) {
-          body.classList.add('hide-header'); // scrolling down
-        } else if (delta < -4) {
-          body.classList.remove('hide-header'); // scrolling up
-        }
-        lastY = y;
-      }
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => { onScroll(); ticking = false; });
-          ticking = true;
-        }
-      }, { passive: true });
-      window.addEventListener('resize', () => { body.classList.remove('hide-header'); });
-    })();
-  </script>
+  {% include scripts.html %}
 </body>
 </html>

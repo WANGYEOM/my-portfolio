@@ -1,0 +1,57 @@
+<script>
+  (function () {
+    const body = document.body;
+    const overlay = document.querySelector('.nav-overlay');
+    const links = document.querySelectorAll('.left-nav a');
+    const workLink = document.getElementById('work-link');
+
+    const open = () => {
+      body.classList.add('nav-open');
+      body.classList.remove('hide-header');
+    };
+    const close = () => {
+      body.classList.remove('nav-open');
+    };
+
+    if (workLink) {
+      workLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (body.classList.contains('nav-open')) close(); else open();
+      });
+    }
+    if (overlay) overlay.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    links.forEach((a) => a.addEventListener('click', close));
+
+    // Mobile subpages: hide header on scroll down, show on scroll up
+    const isHome = body.classList.contains('home');
+    const mq = window.matchMedia('(max-width: 768px)');
+    let lastY = window.scrollY;
+    let ticking = false;
+    function onScroll() {
+      if (!mq.matches || isHome || body.classList.contains('nav-open')) return;
+      const y = window.scrollY;
+      const delta = y - lastY;
+      // Near top always show
+      if (y < 10) {
+        body.classList.remove('hide-header');
+        lastY = y;
+        return;
+      }
+      if (delta > 4) {
+        body.classList.add('hide-header'); // scrolling down
+      } else if (delta < -4) {
+        body.classList.remove('hide-header'); // scrolling up
+      }
+      lastY = y;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => { onScroll(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+    window.addEventListener('resize', () => { body.classList.remove('hide-header'); });
+  })();
+</script>
+
