@@ -170,7 +170,7 @@ body {
   .contact-info {
     display: grid;
     grid-template-columns: 24px 1fr;
-    column-gap: 12px; row-gap: 8px;
+    column-gap: 12px;
     align-items: center;
   }
   .contact-info .arrow-up {
