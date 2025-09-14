@@ -9,12 +9,16 @@
   <link rel="stylesheet" href="{{ '/assets/css/inner.css' | relative_url }}">
   <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
 </head>
-<body class="{% if page.home %}home{% endif %}">
+<body class="{% if page.home %}home {% endif %}{% if page.url contains '/pages/about' or page.title == 'About' %}about{% endif %}">
   <div class="main-wrapper">
     <header class="mobile-header">
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-drawer">
-        <span class="bar"></span>
-      </button>
+      <a class="logo" href="{{ '/' | relative_url }}" aria-label="Go to home">
+        <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K" />
+      </a>
+      <nav class="top-links" aria-label="Primary">
+        <a href="#" id="work-link" class="top-link">WORK</a>
+        <a href="{{ '/pages/about.html' | relative_url }}" class="top-link" id="about-link">ABOUT</a>
+      </nav>
     </header>
     <div class="nav-overlay"></div>
     <nav class="left-nav" id="mobile-drawer">
@@ -108,27 +112,57 @@
   <script>
     (function () {
       const body = document.body;
-      const toggle = document.querySelector('.nav-toggle');
       const overlay = document.querySelector('.nav-overlay');
       const links = document.querySelectorAll('.left-nav a');
+      const workLink = document.getElementById('work-link');
 
       const open = () => {
         body.classList.add('nav-open');
-        if (toggle) toggle.setAttribute('aria-expanded', 'true');
+        body.classList.remove('hide-header');
       };
       const close = () => {
         body.classList.remove('nav-open');
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
       };
 
-      if (toggle) {
-        toggle.addEventListener('click', () => {
+      if (workLink) {
+        workLink.addEventListener('click', (e) => {
+          e.preventDefault();
           if (body.classList.contains('nav-open')) close(); else open();
         });
       }
       if (overlay) overlay.addEventListener('click', close);
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
       links.forEach((a) => a.addEventListener('click', close));
+
+      // Mobile subpages: hide header on scroll down, show on scroll up
+      const isHome = body.classList.contains('home');
+      const mq = window.matchMedia('(max-width: 768px)');
+      let lastY = window.scrollY;
+      let ticking = false;
+      function onScroll() {
+        if (!mq.matches || isHome || body.classList.contains('nav-open')) return;
+        const y = window.scrollY;
+        const delta = y - lastY;
+        // Near top always show
+        if (y < 10) {
+          body.classList.remove('hide-header');
+          lastY = y;
+          return;
+        }
+        if (delta > 4) {
+          body.classList.add('hide-header'); // scrolling down
+        } else if (delta < -4) {
+          body.classList.remove('hide-header'); // scrolling up
+        }
+        lastY = y;
+      }
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => { onScroll(); ticking = false; });
+          ticking = true;
+        }
+      }, { passive: true });
+      window.addEventListener('resize', () => { body.classList.remove('hide-header'); });
     })();
   </script>
 </body>

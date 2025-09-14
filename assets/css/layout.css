@@ -1,6 +1,6 @@
 /* 왼쪽 네비게이션 영역 */
 .left-nav {
-  background: #fff;
+  background: #fcfcfc;
   padding: 40px 32px;
   display: flex;
   flex-direction: column;
@@ -102,10 +102,10 @@
     position: sticky;
     top: 0;
     z-index: 10; /* 헤더가 네비보다 위 */
-    background: #fff;
+    background: #fcfcfc;
     height: 56px;           /* 헤더 높이 고정 */
-    padding: 0 12px;        /* 고정 높이 내 패딩 조정 */
-    border-bottom: 0;       /* 회색 라인 제거 */
+    padding: 0 16px; /* 모바일 헤더 좌우 16px */
+    border-bottom: 1px solid #efefef; /* 옅은 회색 선 */
   }
 
   /* 스크롤 시 헤더 숨김 처리 */
@@ -120,8 +120,18 @@
   .mobile-header .top-links { margin-left: auto; display: inline-flex; gap: 16px; align-items: center; }
   .mobile-header .top-link { 
     text-decoration: none; color: #111;
-    font-size: 0.95rem; line-height: 1; letter-spacing: 0.01em;
-    font-weight: 400; /* 요청: 한 단계 굵게 */
+    font-size: 0.9rem; line-height: 1; letter-spacing: -0.01rem;
+    font-weight: 500;
+  }
+  /* 드롭다운 열림 시 WORK 밑줄 표시 */
+  body.nav-open .mobile-header #work-link {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  /* ABOUT 페이지에서 ABOUT 밑줄 */
+  body.about .mobile-header #about-link {
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .left-nav {
@@ -134,16 +144,22 @@
     overflow-y: auto;
     transform: translateY(-100%);
     transition: transform .25s ease;
-    box-shadow: 0 8px 16px rgba(0,0,0,.06);
+    box-shadow: none; /* 그림자 제거 */
+    border-top: 1px solid #efefef; /* 옅은 회색 선 */
     border-right: 0;
     z-index: 9; /* 오버레이 위, 헤더 아래 */
-    padding: 16px 24px 24px;
-    background: #fff;
+    padding: 24px 16px 16px; /* 좌우 16, 하단 24 */
+    background: #fcfcfc;
+    opacity: 0;            /* 닫힘 상태 표시 방지 */
+    pointer-events: none;
   }
-  body.nav-open .left-nav { transform: translateY(0); }
-  /* 중복 요소 숨김: 모바일에서는 리스트만 노출 */
-  .left-nav .logo,
-  .left-nav .extra { display: none; }
+  body.nav-open .left-nav { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  /* 모바일에서는 리스트 + MISC만 보이게 */
+  .left-nav .logo { display: none; }
+  .left-nav .extra { display: block; margin-top: 8px; }
+  .left-nav .extra li:first-child { display: none; } /* ABOUT 숨김 */
+  .left-nav .extra .tag { display: none; } /* 저작권 태그 숨김 */
+  .left-nav .extra ul { margin-bottom: 0; } /* MISC 아래 여백 24px(부모 패딩)만 적용 */
 
   .nav-overlay {
     display: block;
