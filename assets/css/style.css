@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  font-family: 'Neue Haas Grotesk Display Pro', 'Pretendard', sans-serif;
+  font-family: 'Neue Haas Grotesk Display Pro', 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   margin: 0;
   background: #fcfcfc;
   color: #333;
@@ -16,6 +16,9 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .main-wrapper {
