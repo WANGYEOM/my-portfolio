@@ -16,6 +16,10 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  -webkit-font-smoothing: antialiased;  /* Mac Safari/Chrome */
+  -moz-osx-font-smoothing: grayscale;  /* Firefox Mac */
+  font-smooth: always;                  /* 일부 브라우저 */
 }
 
 
