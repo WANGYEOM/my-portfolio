@@ -169,7 +169,7 @@ body {
   .content-grid .item { aspect-ratio: 16 / 9; }
 
   #content { margin-left: 0; }
-  .footer { margin-left: 0; padding: 16px; } /* 모바일 헤더 좌우 16px과 맞춤 */
+  .footer { margin-left: 0; padding: 16px 24px; } /* 모바일 헤더 좌우 16px과 맞춤 */
 
   .contact-info {
     display: grid;

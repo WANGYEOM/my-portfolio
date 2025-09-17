@@ -2,6 +2,10 @@
   padding: 24px;
 }
 
+.inner-page .img {
+  outline: 1px solid rgba(0, 0, 0, 0.1); /* 이미지 바깥쪽 라인 */
+}
+
 .description {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
@@ -39,14 +43,16 @@ p1 {
   outline: 1px solid rgba(0, 0, 0, 0.1); /* 이미지 바깥쪽 라인 */
 }
 
+/* Mobile: description single column and tighter spacing */
 @media (max-width: 768px) {
+  .inner-page {
+    padding: 16px;               /* 모바일에 맞춘 여백 */
+  }
+  
   .gallery-wrap {
     grid-template-columns: 1fr;
   }
-}
 
-/* Mobile: description single column and tighter spacing */
-@media (max-width: 768px) {
   .description {
     display: block;              /* 두 컬럼 해제 */
     margin-top: 24px;
