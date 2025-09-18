@@ -46,9 +46,16 @@ p1 {
 /* Mobile: description single column and tighter spacing */
 @media (max-width: 768px) {
   .inner-page {
-    padding: 16px;               /* 모바일에 맞춘 여백 */
+    padding: 8px;               /* 모바일에 맞춘 여백 */
   }
   
+  h1 {
+    font-size: 2rem;            /* 모바일에 맞춘 글자 크기 */
+  }
+  p1 {
+    font-size: 1rem;            /* 모바일에 맞춘 글자 크기 */
+  }
+
   .gallery-wrap {
     grid-template-columns: 1fr;
   }
