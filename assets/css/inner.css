@@ -1,5 +1,7 @@
 .inner-page {
-  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-inline: 24px;
 }
 
 .inner-page .img {
@@ -69,8 +71,25 @@ p1 {
   .description p1 { margin-bottom: 8px; }
 }
 
+/* 개발 완료되면 삭제! */
 .temp {
   background: rgb(135, 255, 135);
   color: #000;
   text-align: center;
+  display: grid;
+  animation-duration: 5s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+}
+
+@keyframes slidein {
+  from {
+    margin-inline: 20%;
+  }
+  50% {
+    margin-inline: 0% ;
+  }
+  to {
+    margin-inline: 20% ;
+  }
 }

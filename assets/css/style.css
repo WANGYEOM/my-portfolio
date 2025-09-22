@@ -88,7 +88,6 @@ body {
   margin-left: var(--nav-width); /* 네비게이션 바의 너비만큼 여백 추가 */
   position: relative; /* .content-inner의 절대 위치 기준 */
   background: #fcfcfc;   /* 전체 배경과 통일 */
-  /* min-height: 100vh; /* 내용 없을 때도 안정감 */
   overflow-y: auto; /* 내용이 넘칠 때 스크롤 */
 }
 

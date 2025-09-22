@@ -13,7 +13,6 @@
 <body class="{% if page.home %}home {% endif %}{% if page.url contains '/pages/about' or page.title == 'About' %}about{% endif %}">
   <div class="main-wrapper">
     {% include header.html %}
-
     <main id="content">
       <div class="content-inner fade-in">
         {{ content }}
