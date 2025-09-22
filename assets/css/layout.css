@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-right: 1px solid #efefef;
+  /* border-right: 1px solid #efefef; */
   height: 100vh; /* 화면 전체 높이 */
   box-sizing: border-box;
   width: 280px;
@@ -30,7 +30,7 @@
 }
 
 .logo img, .logo svg {
-  width: 138px;   /* 원하는 크기로 설정 */
+  width: 120px; /* 원하는 크기로 설정 */
   height: auto;
   display: block;
 }
@@ -95,7 +95,7 @@
 .mobile-only { display: none; }
 
 /* 모바일(<=768px)에서: 상단 헤더 + 오프캔버스 네비게이션 */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-header {
     display: flex;
     align-items: center;

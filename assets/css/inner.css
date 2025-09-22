@@ -46,7 +46,7 @@ p1 {
 }
 
 /* Mobile: description single column and tighter spacing */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .inner-page {
     padding: 8px;               /* 모바일에 맞춘 여백 */
   }

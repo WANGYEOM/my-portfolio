@@ -118,36 +118,31 @@ body {
 .footer {
   position: relative;
   background: #fcfcfc;
-  margin-left: var(--nav-width);
-  padding: 20px 32px;
-  border-top: 1px solid #efefef;
+  padding: 32px;
+  /* border-top: 1px solid #efefef; */
+  justify-content: space-between; /* 요소 간 간격 설정 */
+  align-items: left;
+  margin-left: 280px;
 }
 
 .footer .arrow-up img, .footer .arrow-up svg {
   width: 24px;
   height: 24px;
-  align-items: center;
+  align-items: left;
   display: block;
 }
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0;
-  display: flex;
-  justify-content: space-between; /* 요소 간 간격 설정 */
-  align-items: center;
-}  
-
 .contact-info {
   display: flex; /* 가로로 배치 */
-  gap: 24px; /* 요소 간 간격 */
+  /* gap: 24px; /* 요소 간 간격 */
+  flex: 1;
   font-size: 1.125rem;
   color: #333;
 } 
 
 .contact-info span {
   display: inline-block;
-  text-align: center;
+  text-align: left;
   height: 24px;
 }
 
@@ -160,7 +155,7 @@ body {
 }
 
 /* 모바일(<=768px): 통합 규칙 */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .content-grid {
     grid-template-columns: 1fr; /* 1열 */
     gap: 8px; padding: 8px;
