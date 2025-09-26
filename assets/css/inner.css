@@ -84,12 +84,12 @@ p1 {
 
 @keyframes slidein {
   from {
-    margin-inline: 20%;
+    margin-inline: 5%;
   }
   50% {
     margin-inline: 0% ;
   }
   to {
-    margin-inline: 20% ;
+    margin-inline: 5% ;
   }
 }
