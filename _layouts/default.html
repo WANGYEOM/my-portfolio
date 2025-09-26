@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
+  <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
   <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/layout.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/inner.css' | relative_url }}">
+  <link rel="preload" href="{{ '/assets/fonts/AppleSDGothicNeoR.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
 </head>
 <body class="{% if page.home %}home {% endif %}{% if page.url contains '/pages/about' or page.title == 'About' %}about{% endif %}">

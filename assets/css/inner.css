@@ -8,11 +8,19 @@
   outline: 1px solid rgba(0, 0, 0, 0.1); /* 이미지 바깥쪽 라인 */
 }
 
+.inner-page .img-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
 .description {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
-    margin-top: 64px;
-    margin-bottom: 64px;
+    margin-top: 48px;
+    margin-bottom: 48px;
     padding: 64px;
 }
 
@@ -20,14 +28,21 @@ h1 {
     font-weight: 400;
     font-size: 2.5rem;
     line-height: 1.6;
-    margin: 0 0 16px;
+    margin: 0;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 p1 {
     font-weight: 400;
     font-size: 1.25rem;
     line-height: 1.6;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 /* Naming Process: 2-column grid, no side padding */
@@ -73,7 +88,7 @@ p1 {
 
 /* 개발 완료되면 삭제! */
 .temp {
-  background: rgb(135, 255, 135);
+  background: rgb(198, 255, 198);
   color: #000;
   text-align: center;
   display: grid;
