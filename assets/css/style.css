@@ -22,7 +22,6 @@ body {
   font-smooth: always;                  /* 일부 브라우저 */
 }
 
-
 .main-wrapper {
   display: flex;
   flex-direction: column;
@@ -49,7 +48,6 @@ body {
   padding: 16px;
   gap: 16px;
   background: #fcfcfc;
-  flex: 1;
   font-size: 1.2em;
   margin-bottom: 0px;
   box-sizing: border-box;
@@ -77,10 +75,7 @@ body {
     gap: 12px; /* 갭을 줄임 */
     padding: 12px; /* 패딩을 줄임 */
   }
-
 }
-
-/* (모바일 공통 규칙은 파일 하단에서 한 번에 정의) */
 
 /* #content 기본 영역 */
 #content { 
@@ -157,7 +152,7 @@ body {
   vertical-align: -3px;
 }
 
-/* 모바일(<=768px): 통합 규칙 */
+/* 모바일(<=1024px): 통합 규칙 */
 @media (max-width: 1024px) {
   .content-grid {
     grid-template-columns: 1fr; /* 1열 */
@@ -183,6 +178,8 @@ body {
   .contact-info span { text-align: left; }
   .footer a { height: auto; vertical-align: baseline; }
   .top {display: grid;}
+  .hide-on-mobile { display: none !important; }
+  .top { margin-top: 0px; }
 }
 
 /* 콘텐츠 영역: 공백 기준 줄바꿈 적용 (전역) */
