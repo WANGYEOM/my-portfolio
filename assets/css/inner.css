@@ -195,7 +195,7 @@ h2 {
   text-align: center;
   display: grid;
   animation-duration: 1s;
-  animation-delay: 3s;
+  animation-delay: 1.5s;
   animation-name: tada;
   animation-iteration-count: 3;
 }
