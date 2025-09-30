@@ -52,6 +52,74 @@
       }
     }, { passive: true });
     window.addEventListener('resize', () => { body.classList.remove('hide-header'); });
+
+    const moreInfoToggles = document.querySelectorAll('[data-more-info-toggle]');
+    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    moreInfoToggles.forEach((button) => {
+      const targetId = button.getAttribute('aria-controls');
+      if (!targetId) return;
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      const collapsedLabel = button.dataset.labelCollapsed || 'More info';
+      const expandedLabel = button.dataset.labelExpanded || 'Less info';
+
+      const getCollapsedValue = () => {
+        const value = window.getComputedStyle(target).getPropertyValue('--more-info-collapsed');
+        return (value && value.trim()) || '18rem';
+      };
+
+      const forceReflow = () => { void target.getBoundingClientRect(); };
+
+      const onTransitionEnd = (event) => {
+        if (event.propertyName !== 'max-height') return;
+        target.removeEventListener('transitionend', onTransitionEnd);
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        target.style.maxHeight = expanded ? 'none' : '';
+      };
+
+      const animateExpand = () => {
+        target.style.maxHeight = getCollapsedValue();
+        forceReflow();
+        target.classList.add('is-expanded');
+        target.style.maxHeight = `${target.scrollHeight}px`;
+      };
+
+      const animateCollapse = () => {
+        target.style.maxHeight = `${target.scrollHeight}px`;
+        forceReflow();
+        target.classList.remove('is-expanded');
+        target.style.maxHeight = getCollapsedValue();
+      };
+
+      const setExpanded = (expanded, { animate } = { animate: true }) => {
+        button.setAttribute('aria-expanded', String(expanded));
+        button.textContent = expanded ? expandedLabel : collapsedLabel;
+
+        target.removeEventListener('transitionend', onTransitionEnd);
+
+        if (!animate || reduceMotionQuery.matches) {
+          target.classList.toggle('is-expanded', expanded);
+          target.style.maxHeight = expanded ? 'none' : '';
+          return;
+        }
+
+        target.addEventListener('transitionend', onTransitionEnd);
+
+        if (expanded) {
+          animateExpand();
+        } else {
+          animateCollapse();
+        }
+      };
+
+      setExpanded(false, { animate: false });
+
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        setExpanded(!expanded);
+      });
+    });
   })();
 </script>
-

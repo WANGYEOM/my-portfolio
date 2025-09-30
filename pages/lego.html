@@ -13,26 +13,41 @@ title: LEGO
                 Self-study 2020
             </p1>
         </div>
-        <p1 style="padding-right: 64px;">
-            This project explored new marketing opportunities for LEGO by creating
-            media applications aimed at adults and seniors who grew up with the brand.
-            While LEGO is strongly associated with childhood play, it holds deep nostalgic
-            value for many older users who remember it as a creative, hands-on experience.
-            The goal was to reconnect with this audience and renew their engagement with the brand.
-            <br><br>
-            Using brand and market analysis — including LEGO’s 5P framework, SWOT, and positioning
-            studies — the work identified a shift from purely playful, child-oriented products
-            toward experiences that feel sophisticated, educational, and emotionally resonant for
-            adults. Media applications were designed to communicate both creativity and quality
-            while sparking personal memories, reframing LEGO as more than a toy: a platform for
-            expression, learning, and nostalgia.
-            <br><br>
-            The resulting concept positioned LEGO as a lifelong creative companion, balancing its
-            playful heritage with a more refined, knowledge-driven identity. Visual storytelling
-            and media touchpoints were crafted to feel both familiar and elevated, helping the
-            brand strengthen its equity among longtime fans while opening new opportunities in
-            the growing adult builder market.
-        </p1>
+        <div class="description-copy">
+            <div class="more-info" id="more-info">
+                <p1>
+                    This project explored new marketing opportunities for LEGO by creating
+                    media applications aimed at adults and seniors who grew up with the brand.
+                    While LEGO is strongly associated with childhood play, it holds deep nostalgic
+                    value for many older users who remember it as a creative, hands-on experience.
+                    The goal was to reconnect with this audience and renew their engagement with the brand.
+                    <br><br>
+                    Using brand and market analysis — including LEGO’s 5P framework, SWOT, and positioning
+                    studies — the work identified a shift from purely playful, child-oriented products
+                    toward experiences that feel sophisticated, educational, and emotionally resonant for
+                    adults. Media applications were designed to communicate both creativity and quality
+                    while sparking personal memories, reframing LEGO as more than a toy: a platform for
+                    expression, learning, and nostalgia.
+                    <br><br>
+                    The resulting concept positioned LEGO as a lifelong creative companion, balancing its
+                    playful heritage with a more refined, knowledge-driven identity. Visual storytelling
+                    and media touchpoints were crafted to feel both familiar and elevated, helping the
+                    brand strengthen its equity among longtime fans while opening new opportunities in
+                    the growing adult builder market.
+                </p1>
+            </div>
+            <button
+                class="more-info__toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="more-info"
+                data-more-info-toggle
+                data-label-collapsed="More info"
+                data-label-expanded="Less info"
+            >
+                More info
+            </button>
+        </div>
     </div>
     <video autoplay muted playsinline loop controls preload="metadata" class="vid">
         <source src="{{ 'assets/lego/Background Story.mp4' | relative_url }}" type="video/mp4">

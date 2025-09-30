@@ -23,18 +23,73 @@
 
 .main-img {
   width: 100%;
-  height: auto; /* override global .img height */
+  max-height: 640px;
+  object-fit: cover; /* override global .img height */
   display: block;
   margin-top: 88px;
   margin-bottom: 32px;
 }
 
 .description {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
-    margin-top: 32px;
-    margin-bottom: 32px;
-    padding: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding: 32px;
+}
+
+.description-copy {
+  padding-right: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.more-info {
+  --more-info-collapsed: 18rem;
+  position: relative;
+  max-height: var(--more-info-collapsed);
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: max-height;
+}
+
+.more-info::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 96px;
+  background: linear-gradient(180deg, rgba(252, 252, 252, 0) 0%, rgba(252, 252, 252, 1) 75%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.more-info.is-expanded::after {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.more-info__toggle {
+  align-self: flex-start;
+  appearance: none;
+  border: none;
+  border-radius: 40px;
+  background: transparent;
+  color: #111;
+  background-color: #dedede;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  padding: 12px 24px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.more-info__toggle:hover,
+.more-info__toggle:focus-visible {
+  background: #e5e5e5;
+  color: #000;
+  outline: none;
 }
 
 h1 {
@@ -112,6 +167,15 @@ p1 {
 
   .description p1 {
     margin-bottom: 8px;
+  }
+
+  .description-copy {
+    padding-right: 0;
+    gap: 12px;
+  }
+
+  .more-info {
+    max-height: 16rem;
   }
 }
 
