@@ -66,6 +66,13 @@ p1 {
     padding: 8px;               /* 모바일에 맞춘 여백 */
   }
   
+  .inner-page .img-grid {
+    grid-template-columns: 1fr; /* 1열로 변경 */
+    gap: 8px;                  /* 갭을 줄임 */
+    margin-top: 16px;           /* 위 여백을 줄임 */
+    margin-bottom: 16px;        /* 아래 여백을 줄임 */
+  }
+
   h1 {
     font-size: 2rem;            /* 모바일에 맞춘 글자 크기 */
   }
