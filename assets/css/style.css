@@ -113,7 +113,7 @@ body {
 .footer {
   position: relative;
   background: #fcfcfc;
-  padding: 32px;
+  padding: 32px 24px;
   /* border-top: 1px solid #efefef; */
   justify-content: space-between; /* 요소 간 간격 설정 */
   align-items: left;
@@ -130,13 +130,15 @@ body {
 .contact-info {
   max-width: 1400px;
   margin: 0 auto;
-  padding-inline: 24px;
   display: flex; /* 가로로 배치 */
-  /* gap: 24px; /* 요소 간 간격 */
   flex: 1;
   font-size: 1.125rem;
   color: #333;
 } 
+
+.home .contact-info {
+  max-width: none;
+}
 
 .contact-info span {
   display: inline-block;
