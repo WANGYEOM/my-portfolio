@@ -5,27 +5,40 @@
 }
 
 .inner-page .img {
-  outline: 1px solid rgba(0, 0, 0, 0.1); /* 이미지 바깥쪽 라인 */
+  /* outline: 1px solid rgba(0, 0, 0, 0.1); /* 이미지 바깥쪽 라인 */
+  height: auto;
 }
 
 .inner-page .img-grid{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-top: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.inner-page .img-grid > *:nth-child(2n) {
+  margin-top: auto; /* 오른쪽 이미지 위 여백.. 인데 밀리는거 작동이 안되네.. */
+}
+
+.main-img {
+  width: 100%;
+  height: auto; /* override global .img height */
+  display: block;
+  margin-top: 88px;
   margin-bottom: 32px;
 }
 
 .description {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
-    margin-top: 48px;
-    margin-bottom: 48px;
-    padding: 64px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    padding: 32px;
 }
 
 h1 {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 2.5rem;
     line-height: 1.6;
     margin: 0;
@@ -60,6 +73,12 @@ p1 {
   outline: 1px solid rgba(0, 0, 0, 0.1); /* 이미지 바깥쪽 라인 */
 }
 
+.vid {
+  width: 100%;
+  height: auto; /* override global .img height */
+  display: block;
+  }
+
 /* Mobile: description single column and tighter spacing */
 @media (max-width: 1024px) {
   .inner-page {
@@ -67,15 +86,15 @@ p1 {
   }
   
   .inner-page .img-grid {
-    grid-template-columns: 1fr; /* 1열로 변경 */
     gap: 8px;                  /* 갭을 줄임 */
-    margin-top: 16px;           /* 위 여백을 줄임 */
-    margin-bottom: 16px;        /* 아래 여백을 줄임 */
+    margin-top: 8px;           /* 위 여백을 줄임 */
+    margin-bottom: 8px;        /* 아래 여백을 줄임 */
   }
 
   h1 {
     font-size: 2rem;            /* 모바일에 맞춘 글자 크기 */
   }
+
   p1 {
     font-size: 1rem;            /* 모바일에 맞춘 글자 크기 */
   }
@@ -90,7 +109,10 @@ p1 {
     margin-bottom: 24px;
     padding: 16px;               /* 모바일에 맞춘 여백 */
   }
-  .description p1 { margin-bottom: 8px; }
+
+  .description p1 {
+    margin-bottom: 8px;
+  }
 }
 
 /* 개발 완료되면 삭제! */
