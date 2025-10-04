@@ -68,6 +68,13 @@ body {
   object-fit: cover;
 }
 
+.content-grid .item .img-inner {
+  object-fit: contain;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
 /* 반응형 레이아웃: 화면 크기가 1320px 이하일 때 */
 @media (max-width: 1320px) {
   .content-grid {
