@@ -93,32 +93,32 @@
 }
 
 h1 {
-    font-weight: 500;
-    font-size: 2.5rem;
-    line-height: 1.6;
-    margin: 0;
+  font-weight: 500;
+  font-size: 2.5rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
 h2 {
-    font-weight: 400;
-    font-size: 1.5rem;
-    line-height: 1.6;
-    margin: 0;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .body-copy {
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 1.6;
-    margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 8px;
 }
 
 .caption {
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 1.6;
-    color: #333333;
-    text-align: left;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #333333;
+  text-align: left;
 }
 /* Naming Process: 2-column grid, no side padding */
 .gallery-wrap {
@@ -150,7 +150,12 @@ h2 {
   .inner-page .img-grid {
     grid-template-columns: repeat(1, 1fr);
     gap: 4px;
-    }
+  }
+
+  .main-img {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
 
   h1 {
     font-size: 2rem;            /* 모바일에 맞춘 글자 크기 */
@@ -166,7 +171,7 @@ h2 {
 
   .description {
     display: block;              /* 두 컬럼 해제 */
-    margin-top: 24px;
+    margin-top: 16px;
     margin-bottom: 24px;
     padding: 16px;               /* 모바일에 맞춘 여백 */
   }

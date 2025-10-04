@@ -12,24 +12,39 @@ title: The Golden Record
             <h2>NASA Outreach Brochure</h2>
             <p class="body-copy">2020<br>Self-study</p>
         </div>
-        <p class="body-copy" style="padding-right: 64px;"> The Golden Record project is an educational
-            B5 tri-fold brochure created for NASA’s outreach program, targeting students
-            aged 14–18. It introduces the story of the Golden Record — the phonograph record
-            launched aboard the Voyager 1 and 2 spacecraft nearly fifty years ago — carrying
-            sounds, images, and messages about life on Earth to the unknown reaches of space.
-            <br><br>
-            The brochure explains the Voyager missions and the cultural significance of sending
-            a message from humanity to the universe. Scientific and historical details were
-            distilled into clear, engaging visuals and concise text so that young readers
-            can easily grasp both the technical achievement and the imaginative vision behind
-            the mission.
-            <br><br>
-            The design combines educational clarity and visual storytelling, using a progressive
-            tri-fold structure, deep-space imagery, and a clean information hierarchy. It guides
-            readers from the launch of the spacecraft to the contents of the record, ending with
-            a reflection on what it means to present humanity’s story to the cosmos.
-        </p>
+        <div class="description-copy">
+            <div class="more-info" id="more-info">
+                <p class="body-copy" style="padding-right: 64px;"> The Golden Record project is an educational
+                    B5 tri-fold brochure created for NASA’s outreach program, targeting students
+                    aged 14–18. It introduces the story of the Golden Record — the phonograph record
+                    launched aboard the Voyager 1 and 2 spacecraft nearly fifty years ago — carrying
+                    sounds, images, and messages about life on Earth to the unknown reaches of space.
+                    <br><br>
+                    The brochure explains the Voyager missions and the cultural significance of sending
+                    a message from humanity to the universe. Scientific and historical details were
+                    distilled into clear, engaging visuals and concise text so that young readers
+                    can easily grasp both the technical achievement and the imaginative vision behind
+                    the mission.
+                    <br><br>
+                    The design combines educational clarity and visual storytelling, using a progressive
+                    tri-fold structure, deep-space imagery, and a clean information hierarchy. It guides
+                    readers from the launch of the spacecraft to the contents of the record, ending with
+                    a reflection on what it means to present humanity’s story to the cosmos.
+                </p>
+            </div>
+            <button
+            class="more-info__toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="more-info"
+            data-more-info-toggle
+            data-label-collapsed="More info"
+            data-label-expanded="Less info"
+            >
+            More info
+        </button>
+        </div>
     </div>
-    <img class="img" src="{{ 'assets/golden-record/golden_spread-02.png' | relative_url }}" alt="The Golden Record 2" style="margin-bottom: 8px;">
-    <img class="img" src="{{ 'assets/golden-record/golden_spread-thumbnail.png' | relative_url }}" alt="The Golden Record 3">
+    <img class="img" src="{{ 'assets/golden-record/golden_spread-thumbnail.png' | relative_url }}" alt="The Golden Record 2" style="margin-bottom: 8px;">
+    <img class="img" src="{{ 'assets/golden-record/golden_spread-02.png' | relative_url }}" alt="The Golden Record 3">
 </div>
