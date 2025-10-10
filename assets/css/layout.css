@@ -94,8 +94,7 @@
 .nav-overlay { display: none; }
 .mobile-only { display: none; }
 
-/* 모바일(<=768px)에서: 상단 헤더 + 오프캔버스 네비게이션 */
-@media (max-width: 1024px) {
+@media (max-width: 1240px) {
   .mobile-header {
     display: flex;
     align-items: center;
@@ -119,10 +118,18 @@
   .mobile-header .logo img,
   .mobile-header .logo svg { height: 28px; width: auto; }
 
-  .mobile-header .top-links { margin-left: auto; display: inline-flex; gap: 16px; align-items: center; }
+  .mobile-header .top-links {
+    margin-left: auto;
+    display: inline-flex;
+    gap: 16px;
+    align-items: center;
+  }
   .mobile-header .top-link { 
-    text-decoration: none; color: #111;
-    font-size: 0.9rem; line-height: 1; letter-spacing: -0.01rem;
+    text-decoration: none;
+    color: #111;
+    font-size: 0.9rem;
+    line-height: 1;
+    letter-spacing: -0.01rem;
     font-weight: 500;
   }
   /* 드롭다운 열림 시 WORK 밑줄 표시 */
@@ -155,7 +162,11 @@
     opacity: 0;            /* 닫힘 상태 표시 방지 */
     pointer-events: none;
   }
-  body.nav-open .left-nav { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  body.nav-open .left-nav {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
   /* 모바일에서는 리스트 + MISC만 보이게 */
   .left-nav .logo { display: none; }
   .left-nav .extra { display: block; margin-top: 8px; }

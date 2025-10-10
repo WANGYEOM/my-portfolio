@@ -17,6 +17,17 @@
   margin-bottom: 8px;
 }
 
+.inner-page .img-grid .img-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 0;
+}
+
+.inner-page .img-grid .span-2 {
+  grid-column: span 2;
+}
+
 .inner-page .img-grid > *:nth-child(2n) {
   margin-top: auto; /* 오른쪽 이미지 위 여백.. 인데 밀리는거 작동이 안되네.. */
 }
@@ -139,22 +150,20 @@ h2 {
   width: 100%;
   height: auto; /* override global .img height */
   display: block;
-  }
+}
 
-/* Mobile: description single column and tighter spacing */
-@media (max-width: 1024px) {
+@media (max-width: 1240px) {
   .inner-page {
-    padding: 8px;               /* 모바일에 맞춘 여백 */
-  }
-  
-  .inner-page .img-grid {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 4px;
+    padding-inline: 8px;
   }
 
   .main-img {
-    margin-top: 16px;
+    margin-top: 8px;
     margin-bottom: 16px;
+  }
+
+  .main-img .sunbeeoff {
+    object-position: 0 0;
   }
 
   h1 {
@@ -187,6 +196,25 @@ h2 {
 
   .more-info {
     max-height: 16rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .inner-page .img-grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .inner-page .img-grid > * {
+    grid-column: auto;
+  }
+
+  .inner-page .img-grid .img-grid-3col {
+    grid-template-columns: 1fr;
+  }
+
+  .inner-page .img-grid .span-2 {
+    grid-column: auto;
   }
 }
 

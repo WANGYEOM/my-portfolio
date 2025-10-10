@@ -75,12 +75,11 @@ body {
   box-sizing: border-box;
 }
 
-/* 반응형 레이아웃: 화면 크기가 1320px 이하일 때 */
-@media (max-width: 1320px) {
+@media (max-width: 1240px) {
   .content-grid {
     grid-template-columns: 1fr; /* 1열로 변경 */
-    gap: 12px; /* 갭을 줄임 */
-    padding: 12px; /* 패딩을 줄임 */
+    gap: 8px; /* 갭을 줄임 */
+    padding: 8px; /* 패딩을 줄임 */
   }
 }
 
@@ -161,11 +160,11 @@ body {
   vertical-align: -3px;
 }
 
-/* 모바일(<=1024px): 통합 규칙 */
-@media (max-width: 1024px) {
+@media (max-width: 1240px) {
   .content-grid {
-    grid-template-columns: 1fr; /* 1열 */
-    gap: 8px; padding: 8px;
+    grid-template-columns: repeat(2, 1fr); /* 2열 */
+    gap: 8px;
+    padding: 8px;
   }
   .content-grid .item { aspect-ratio: 16 / 9; }
 
@@ -174,8 +173,9 @@ body {
 
   .contact-info {
     display: grid;
-    grid-template-columns: 24px 1fr;
-    column-gap: 12px; row-gap: 0;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 12px;
+    row-gap: 0;
     align-items: center;
   }
   .contact-info .arrow-up {
@@ -189,6 +189,12 @@ body {
   .top {display: grid;}
   .hide-on-mobile { display: none !important; }
   .top { margin-top: 0px; }
+}
+
+@media (max-width: 720px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  } /* 1열 */
 }
 
 /* 콘텐츠 영역: 공백 기준 줄바꿈 적용 (전역) */
