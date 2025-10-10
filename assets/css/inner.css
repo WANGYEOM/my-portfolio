@@ -41,6 +41,10 @@
   margin-bottom: 32px;
 }
 
+.sunbeeoff {
+  object-position: top; /* 이미지 위치 조정 */
+}
+
 .description {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 기본적으로 2열 */
@@ -162,7 +166,7 @@ h2 {
     margin-bottom: 16px;
   }
 
-  .main-img .sunbeeoff {
+  .sunbeeoff {
     object-position: 0 0;
   }
 
