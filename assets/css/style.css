@@ -38,7 +38,7 @@ body {
   gap: 16px; /* 박스 간의 간격 */
   padding: 16px; /* 그리드 내부 여백 */
   background: #fcfcfc;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   box-sizing: border-box;
 }
 
