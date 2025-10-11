@@ -9,6 +9,10 @@
   height: auto;
 }
 
+.inner-page.full-page-image .img + .img {
+  margin-top: 16px;
+}
+
 .inner-page .img-grid{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -180,6 +184,10 @@ h2 {
   .caption {
     font-size: 1rem;            /* 모바일에 맞춘 글자 크기 */
     padding-right: 16px;
+  }
+
+  .inner-page.full-page-image .img + .img {
+    margin-top: 8px;
   }
 
   .gallery-wrap {
