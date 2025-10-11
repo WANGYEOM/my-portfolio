@@ -46,7 +46,7 @@
 }
 
 .left-nav nav ul li {
-  font-size: 1.25rem;
+  font-size: 1.175rem;
   margin-bottom: 12px;
   opacity: 1;
 }
@@ -59,6 +59,13 @@
   color: inherit;        /* li 글자색을 그대로 상속 */
 }
 
+.left-nav nav ul .ko {
+  font-size: 1.15rem;
+  font-family: AppleSDGothicNeo, sans-serif;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
 .left-nav nav ul .tag {
   font-size: 0.85em;
   opacity: 0.7;
@@ -66,7 +73,7 @@
 
 .left-nav .extra {
   margin-top: auto;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   opacity: 0.8;
 }
 
@@ -75,6 +82,10 @@
   margin: 0;
   padding: 0;
   margin-bottom: 10rem;
+}
+
+.left-nav .extra ul li {
+  margin-bottom: 4px;
 }
 
 .left-nav .extra a {
