@@ -51,6 +51,7 @@ body {
   font-size: 1.2em;
   margin-bottom: 0px;
   box-sizing: border-box;
+  flex: 1;
 }
 
 /* 각 작업 썸네일 스타일 */

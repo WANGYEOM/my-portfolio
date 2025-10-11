@@ -37,7 +37,7 @@
   margin-bottom: 32px;
 }
 
-.sunbeeoff {
+.img-aligntop {
   object-position: top; /* 이미지 위치 조정 */
 }
 
@@ -165,7 +165,7 @@ h2 {
     margin-bottom: 16px;
   }
 
-  .sunbeeoff {
+  .img-aligntop {
     object-position: 0 0;
   }
 
