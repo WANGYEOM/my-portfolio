@@ -231,6 +231,32 @@ body {
   vertical-align: -3px;
 }
 
+@media (max-width: 1240px) {
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 12px;
+    row-gap: 0;
+    align-items: center;
+  }
+  .contact-info .arrow-up {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    display: flex;
+    align-items: center;
+  }
+  .footer a {
+    height: auto;
+    vertical-align: baseline;
+  }
+  
+  .contact-info span:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .contact-info span:nth-child(3) { grid-column: 2; grid-row: 2; }
+  .contact-info span:nth-child(4) { grid-column: 2; grid-row: 3; }
+  .contact-info span { text-align: left; }
+  
+}
+
 @media (max-width: 900px) {
   .home-hero__bio {
     font-size: 1rem;
@@ -272,6 +298,7 @@ body {
   .home-hero__bio {
     gap: 14px;
   }
+
   .content-grid {
     grid-template-columns: 1fr;
     padding: 0 8px 56px;
@@ -290,23 +317,6 @@ body {
   }
 }
 
-@media (max-width: 1240px) {
-  .contact-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 12px;
-    row-gap: 0;
-    align-items: center;
-  }
-  .contact-info .arrow-up {
-    grid-column: 1; grid-row: 1 / span 2;
-    display: flex; align-items: center;
-  }
-  .contact-info span:nth-child(2) { grid-column: 2; grid-row: 1; }
-  .contact-info span:nth-child(3) { grid-column: 2; grid-row: 2; }
-  .contact-info span { text-align: left; }
-  .footer a { height: auto; vertical-align: baseline; }
-}
 
 /* 콘텐츠 영역: 공백 기준 줄바꿈 적용 (전역) */
 .content-inner,

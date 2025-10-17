@@ -195,8 +195,59 @@
 
     updateHeaderOnScroll();
 
+    const backToTop = document.getElementById('back-to-top');
     const moreInfoToggles = document.querySelectorAll('[data-more-info-toggle]');
     const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const scrollTargets = [
+      document.getElementById('content'),
+      document.scrollingElement,
+      document.documentElement,
+      document.body
+    ].filter((target, index, array) => target && array.indexOf(target) === index);
+
+    const getScrollTop = () => {
+      const values = scrollTargets.map((target) => ('scrollTop' in target) ? target.scrollTop : 0);
+      values.push(window.scrollY || window.pageYOffset || 0);
+      return Math.max(...values);
+    };
+
+    const setScrollTop = (value) => {
+      scrollTargets.forEach((target) => {
+        if (!target) return;
+        if (typeof target.scrollTo === 'function') {
+          target.scrollTo(0, value);
+        } else if ('scrollTop' in target) {
+          target.scrollTop = value;
+        }
+      });
+      window.scrollTo(0, value);
+    };
+
+    const animateScrollToTop = (duration = 1000) => {
+      const startY = getScrollTop();
+      if (startY <= 0) return;
+      if (reduceMotionQuery.matches) {
+        setScrollTop(0);
+        return;
+      }
+
+      const startTime = performance.now();
+
+      const step = (now) => {
+        const elapsed = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - elapsed, 3);
+        setScrollTop(startY * (1 - eased));
+        if (elapsed < 1) window.requestAnimationFrame(step);
+      };
+
+      window.requestAnimationFrame(step);
+    };
+
+    backToTop?.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      animateScrollToTop(1000);
+    });
 
     moreInfoToggles.forEach((button) => {
       const targetId = button.getAttribute('aria-controls');
