@@ -33,6 +33,14 @@
       window.clearTimeout(hideMenuTimer);
       worksToggle?.setAttribute('aria-expanded', 'false');
 
+      if (!worksItem.classList.contains('is-open')) {
+        worksMenu.classList.remove('is-hiding');
+        worksMenu.setAttribute('aria-hidden', 'true');
+        body.classList.remove('works-menu-open');
+        siteHeader?.classList.remove('is-hidden');
+        return;
+      }
+
       const startClosing = () => {
         worksItem.classList.remove('is-open');
         worksMenu.classList.add('is-hiding');
@@ -78,7 +86,7 @@
     });
 
     document.addEventListener('pointerdown', (event) => {
-      if (!worksItem) return;
+      if (!worksItem || !worksItem.classList.contains('is-open')) return;
       if (worksItem.contains(event.target)) return;
       closeWorksMenu();
     });
@@ -132,7 +140,7 @@
     }
 
     const handleDocumentPointerDown = (event) => {
-      if (!worksItem || !mobileQuery.matches) return;
+      if (!worksItem || !mobileQuery.matches || !worksItem.classList.contains('is-open')) return;
       if (worksItem.contains(event.target)) return;
       closeWorksMenu();
     };
