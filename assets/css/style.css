@@ -267,7 +267,7 @@ body {
   }
   .content-grid {
     grid-template-columns: 1fr;
-    padding: 0 16px 56px;
+    padding: 0 8px 56px;
     gap: 16px;
   }
   .hide-on-mobile {
