@@ -93,16 +93,33 @@
       }
     });
 
-    if (worksItem) {
-      worksItem.addEventListener('focusin', () => {
-        worksMenu?.setAttribute('aria-hidden', 'false');
-        openWorksMenu();
-      });
-      worksItem.addEventListener('focusout', (event) => {
-        if (!worksItem.contains(event.relatedTarget)) {
-          closeWorksMenu();
-        }
-      });
+    const handleFocusIn = () => {
+      worksMenu?.setAttribute('aria-hidden', 'false');
+      openWorksMenu();
+    };
+
+    const handleFocusOut = (event) => {
+      const nextFocus = event.relatedTarget;
+      if (nextFocus && worksItem?.contains(nextFocus)) return;
+      closeWorksMenu();
+    };
+
+    const updateFocusHandlers = () => {
+      if (!worksItem) return;
+      worksItem.removeEventListener('focusin', handleFocusIn);
+      worksItem.removeEventListener('focusout', handleFocusOut);
+
+      if (prefersHover.matches) {
+        worksItem.addEventListener('focusin', handleFocusIn);
+        worksItem.addEventListener('focusout', handleFocusOut);
+      }
+    };
+
+    updateFocusHandlers();
+    if (typeof prefersHover.addEventListener === 'function') {
+      prefersHover.addEventListener('change', updateFocusHandlers);
+    } else if (typeof prefersHover.addListener === 'function') {
+      prefersHover.addListener(updateFocusHandlers);
     }
 
     if (worksItem && prefersHover.matches) {

@@ -262,6 +262,7 @@ body.works-menu-open .nav-overlay {
   .site-logo__image { height: 35px; }
   .primary-nav {
     gap: 16px;
+    padding-right: 0;
   }
   .nav-link {
     font-size: 0.88rem;
