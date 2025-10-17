@@ -1,86 +1,112 @@
-<header class="mobile-header">
-  <a class="logo" href="{{ '/' | relative_url }}" aria-label="Go to home">
-    <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K" />
-  </a>
-  <nav class="top-links" aria-label="Primary">
-    <a href="#" id="work-link" class="top-link">WORK</a>
-    <a href="{{ '/pages/about.html' | relative_url }}" class="top-link" id="about-link">ABOUT</a>
-  </nav>
-</header>
-<div class="nav-overlay"></div>
-<nav class="left-nav" id="mobile-drawer">
-  <div class="logo">
-    <a href="{{ '/' | relative_url }}">
-      <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K" />
+{% assign works_pages = '/,/index.html,/pages/immuone.html,/pages/wellbuy.html,/pages/democracy.html,/pages/suwon-hanok.html,/pages/lego.html,/pages/sunbee.html,/pages/tashu.html,/pages/shanghai-branding.html,/pages/loop.html,/pages/naming-process.html' | split: ',' %}
+{% assign misc_pages = '/pages/others.html,/pages/alrt-2022.html,/pages/golden-record.html,/pages/report-simple.html' | split: ',' %}
+{% assign about_pages = '/pages/about.html' | split: ',' %}
+{% assign works_active = false %}
+{% assign misc_active = false %}
+{% assign about_active = false %}
+
+{% for url in works_pages %}
+  {% if page.url == url %}
+    {% assign works_active = true %}
+  {% endif %}
+{% endfor %}
+
+{% for url in misc_pages %}
+  {% if page.url == url %}
+    {% assign misc_active = true %}
+  {% endif %}
+{% endfor %}
+
+{% for url in about_pages %}
+  {% if page.url == url %}
+    {% assign about_active = true %}
+  {% endif %}
+{% endfor %}
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-logo" href="{{ '/' | relative_url }}" aria-label="Go to home">
+      <span class="site-logo__layer site-logo__layer--back" aria-hidden="true">
+        <img src="{{ '/assets/logo.svg' | relative_url }}" alt="" class="site-logo__image site-logo__image--back" />
+      </span>
+      <span class="site-logo__layer site-logo__layer--front">
+        <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K logo" class="site-logo__image site-logo__image--front" />
+      </span>
     </a>
+    <nav class="primary-nav" id="navigation-menu" aria-label="Primary navigation">
+      <a href="{{ '/pages/about.html' | relative_url }}" class="nav-link{% if about_active %} is-active{% endif %}">ABOUT</a>
+      <a href="{{ '/pages/others.html' | relative_url }}" class="nav-link nav-link--misc{% if misc_active %} is-active{% endif %}">MISC</a>
+      <div class="nav-item nav-item--works{% if works_active %} is-current{% endif %}">
+        <button class="nav-link nav-link--trigger" type="button" id="works-toggle" aria-expanded="false" aria-controls="works-menu">
+          WORKS
+        </button>
+        <div class="works-menu" id="works-menu" hidden>
+          <ul class="works-menu__list">
+            <li>
+              <a href="{{ '/pages/immuone.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/immuone.html' %} is-active{% endif %}">
+                immuone <span class="tag">(saas)</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/pages/wellbuy.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/wellbuy.html' %} is-active{% endif %}">
+                wellbuy <span class="tag">(identity)</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/pages/democracy.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/democracy.html' %} is-active{% endif %}">
+                <span class="ko">민주인권기념관</span>
+                <span class="tag">(identity)</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/pages/suwon-hanok.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/suwon-hanok.html' %} is-active{% endif %}">
+                <span class="ko">수원한옥</span>
+                <span class="tag">(pictogram)</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/pages/lego.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/lego.html' %} is-active{% endif %}">
+                LEGO <span class="tag">(editorial)</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/pages/sunbee.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/sunbee.html' %} is-active{% endif %}">
+                <span class="ko">선비세상</span>
+                <span class="tag">(signage)</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/pages/tashu.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/tashu.html' %} is-active{% endif %}">
+                Tashu <span class="tag">(UI)</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/pages/shanghai-branding.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/shanghai-branding.html' %} is-active{% endif %}">
+                Shanghai <span class="tag">(city branding)</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/pages/loop.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/loop.html' %} is-active{% endif %}">
+                Loop <span class="tag">(transportation)</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ '/pages/naming-process.html' | relative_url }}" class="works-menu__link{% if page.url == '/pages/naming-process.html' %} is-active{% endif %}">
+                Naming <span class="tag">(thesis)</span>
+              </a>
+            </li>
+            <li class="works-menu__note">
+              ** <span class="tag">(typography)</span>
+            </li>
+            <li class="works-menu__misc mobile-only">
+              <a href="{{ '/pages/others.html' | relative_url }}" class="works-menu__link{% if misc_active %} is-active{% endif %}">
+                MISC
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
-  <nav>
-    <ul>
-      <li>
-        <a href="{{ '/pages/immuone.html' | relative_url }}" class="nav-link">
-          immuone <span class="tag">(saas)</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/pages/wellbuy.html' | relative_url }}" class="nav-link">
-          wellbuy <span class="tag">(identity)</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/pages/democracy.html' | relative_url }}" class="nav-link">
-          <span class="ko">민주인권기념관</span>
-          <span class="tag">(identity)</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/pages/suwon-hanok.html' | relative_url }}" class="nav-link">
-          <span class="ko">수원한옥</span>
-          <span class="tag">(pictogram)</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/pages/lego.html' | relative_url }}" class="nav-link">
-          LEGO <span class="tag">(editorial)</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/pages/sunbee.html' | relative_url }}" class="nav-link">
-          <span class="ko">선비세상</span>
-          <span class="tag">(signage)</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/pages/tashu.html' | relative_url }}" class="nav-link">
-          Tashu <span class="tag">(UI)</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/pages/shanghai-branding.html' | relative_url }}" class="nav-link">
-          Shanghai <span class="tag">(city branding)</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/pages/loop.html' | relative_url }}" class="nav-link">
-          Loop <span class="tag">(transportation)</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ '/pages/naming-process.html' | relative_url }}" class="nav-link">
-          Naming<span class="tag">(thesis)</span>
-        </a>
-      </li>
-      <li>** <span class="tag">(typography)</span></li>
-    </ul>
-  </nav>
-  <div class="extra">
-    <ul>
-      <li>
-        <a href="{{ '/pages/about.html' | relative_url }}" class="nav-link">ABOUT</a>
-      </li>
-      <li>
-        <a href="{{ '/pages/others.html' | relative_url }}" class="nav-link">MISC</a>
-      </li>
-    </ul>
-    <span class="tag">ⓒ Mat.K 2025</br>all rights reserved</span>
-  </div>
-</nav>
+</header>
+<div class="nav-overlay" hidden></div>
