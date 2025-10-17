@@ -199,7 +199,7 @@ button.nav-link {
   inset: auto 0 0 0;
   width: 0;
   height: 0.6em;
-  background: #c2ffd2;
+  background: #71ff78;
   z-index: -1;
   transition: width 0.2s ease;
 }

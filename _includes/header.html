@@ -26,12 +26,7 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a class="site-logo" href="{{ '/' | relative_url }}" aria-label="Go to home">
-      <span class="site-logo__layer site-logo__layer--back" aria-hidden="true">
-        <img src="{{ '/assets/logo.svg' | relative_url }}" alt="" class="site-logo__image site-logo__image--back" />
-      </span>
-      <span class="site-logo__layer site-logo__layer--front">
-        <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K logo" class="site-logo__image site-logo__image--front" />
-      </span>
+      <img src="{{ '/assets/logo.svg' | relative_url }}" alt="mat.K logo" class="site-logo__image" />
     </a>
     <nav class="primary-nav" id="navigation-menu" aria-label="Primary navigation">
       <a href="{{ '/pages/about.html' | relative_url }}" class="nav-link{% if about_active %} is-active{% endif %}">ABOUT</a>
