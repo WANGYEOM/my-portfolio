@@ -216,22 +216,6 @@ button.nav-link {
   font-weight: 500;
 }
 
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(17, 17, 17, 0.35);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.18s ease;
-  z-index: 90;
-}
-
-body.works-menu-open .nav-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .mobile-only {
   display: none;
 }
@@ -252,9 +236,6 @@ body.works-menu-open .nav-overlay {
 }
 
 @media (max-width: 720px) {
-  .nav-overlay {
-    display: block;
-  }
   .site-header__inner {
     gap: 20px;
     padding: 14px 16px;
@@ -284,8 +265,4 @@ body.works-menu-open .nav-overlay {
 }
 
 @media (min-width: 721px) {
-  body.works-menu-open .nav-overlay {
-    opacity: 0;
-    pointer-events: none;
-  }
 }
