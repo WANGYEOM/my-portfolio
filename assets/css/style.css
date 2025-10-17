@@ -130,10 +130,17 @@ body {
 
 /* 각 작업 썸네일 스타일 */
 .content-grid .item {
+  display: flex;
   overflow: hidden;
   align-items: center;
   justify-content: center;
   aspect-ratio: 5 / 3;
+}
+
+.content-grid .item > .nav-link {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .content-grid .item img {
@@ -268,7 +275,7 @@ body {
   .content-grid {
     grid-template-columns: 1fr;
     padding: 0 8px 56px;
-    gap: 16px;
+    gap: 8px;
   }
   .hide-on-mobile {
     display: none !important;
