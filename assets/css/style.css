@@ -306,6 +306,9 @@ body {
     padding: 0 8px 56px;
     gap: 8px;
   }
+  .content-grid .item {
+    aspect-ratio: 16 / 9;
+  }
   .hide-on-mobile {
     display: none !important;
   }
