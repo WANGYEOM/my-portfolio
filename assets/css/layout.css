@@ -114,8 +114,6 @@ button.nav-link {
   padding: 0;
   border: 0;
   background: none;
-  -webkit-appearance: none;
-  appearance: none;
 }
 
 .nav-item--works.is-open .nav-link--trigger,
