@@ -93,7 +93,9 @@ body {
   z-index: -1;
   transition: width 0.15s ease;
 }
-
+.highlight--delayed::after {
+  transition-delay: 0.2s;
+}
 
 .home-hero__note {
   margin: 0;
