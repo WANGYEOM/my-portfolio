@@ -74,11 +74,13 @@
 
 .nav-item {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .nav-link {
   display: inline-flex;
-  align-items: center;
+  align-items: left;
   background: none;
   border: 0;
   line-height: 1.2;
@@ -132,7 +134,7 @@ button.nav-link {
   background: #f3f3f3;
   color: #111;
   border-radius: 10px;
-  padding: 20px 22px;
+  padding: 16px 20px;
   width: min(200px, 70vw);
   box-shadow: 0 20px 48px -32px rgba(0, 0, 0, 0.1);
   opacity: 0;
@@ -156,12 +158,12 @@ button.nav-link {
   padding: 0;
   padding-inline-start: 0;
   display: grid;
-  gap: 12px;
+  gap: 0;
   justify-items: start;
 }
 
 .works-menu__link {
-  display: inline;
+  display: block;
   color: inherit;
   text-decoration: none;
   font-size: 1.2rem;
@@ -169,6 +171,7 @@ button.nav-link {
   letter-spacing: -0.01em;
   position: relative;
   z-index: 0;
+  padding: 6px 0;
 }
 
 .works-menu__link .ko {
@@ -180,7 +183,7 @@ button.nav-link {
 .works-menu__link .tag {
   margin-left: 4px;
   font-size: 0.9rem;
-  opacity: 0.85;
+  color: #7a7a7a;
   letter-spacing: normal;
   font-weight: 500;
 }
@@ -198,7 +201,7 @@ button.nav-link {
 .works-menu__link::after {
   content: "";
   position: absolute;
-  inset: auto 0 0 0;
+  inset: 1.1rem 0 0 0;
   width: 0;
   height: 0.6em;
   background: #71ff78;
@@ -214,7 +217,7 @@ button.nav-link {
 .works-menu__note {
   font-size: 0.95rem;
   color: rgba(0, 0, 0, 0.55);
-  padding-top: 4px;
+  margin-top: 8px;
   font-weight: 500;
 }
 
