@@ -22,7 +22,7 @@ body {
 /* Home hero */
 .home-hero {
   margin: 0 auto;
-  padding: 80px 32px 32px;
+  padding: 80px 32px 80px 32px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-flow: row;
@@ -249,13 +249,13 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-in;
 }
 
 .content-grid .item:hover .item-image img,
 .content-grid .item:focus-within .item-image img {
-  transform: scale(1.05);
-  opacity: 0.6;
+  transform: scale(1.015);
+  opacity: 0.9;
 }
 
 .content-grid .item .img-inner {
