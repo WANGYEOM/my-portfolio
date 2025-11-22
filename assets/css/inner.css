@@ -8,6 +8,12 @@
     height: auto;
 }
 
+.inner-page .vid {
+    width: 100%;
+    aspect-ratio: 13 / 9;
+    margin: 16px 0;
+}
+
 .inner-page.full-page-image .img + .img {
   margin-top: 16px;
 }
@@ -188,6 +194,10 @@ h2 {
 
   .caption {
     padding-right: 16px;
+  }
+
+  .inner-page .vid {
+      margin: 8px 0;
   }
 
   .inner-page.full-page-image .img + .img {
