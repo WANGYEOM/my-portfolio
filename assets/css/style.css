@@ -22,12 +22,13 @@ body {
 /* Home hero */
 .home-hero {
   margin: 0 auto;
-  padding: 64px 32px;
+  padding: 120px 32px 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
   box-sizing: border-box;
+  min-height: 60vh;
 }
 
 .home-hero__bio {
@@ -45,6 +46,54 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+.home-hero__gallery {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.home-hero__gallery-main {
+  width: min(320px, 70vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+  overflow: hidden;
+  background: #0e0e0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-hero__gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-hero__gallery-stack {
+  position: absolute;
+  inset: -12px;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.18));
+  opacity: 0.95;
+}
+
+.home-hero__gallery-stack img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: 0 14px 32px -20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0.88;
+}
+
+.home-hero__gallery-stack img:hover {
+  opacity: 1;
+  transform: translateY(-6px) scale(1.02);
 }
 
 .home-hero__image {
@@ -121,9 +170,10 @@ body {
   background: #d9d9d9;
   color: #111;
   border-radius: 12px;
+  font-family: 'Neue Haas Grotesk Display Pro', 'Neue Haas Grotesk Disp Pro', 'Neue Haas Grotesk', Helvetica, Arial, sans-serif;
   font-size: 1.2rem;
   font-weight: 400;
-  letter-spacing: 0.01rem;
+  letter-spacing: -0.01em;
   line-height: 1.4;
   opacity: 0;
   pointer-events: none;
@@ -470,6 +520,9 @@ body {
   .home-hero__bio {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+  .home-hero__gallery-main {
+    width: min(320px, 82vw);
   }
   .home-hero__text {
     font-size: 1.375rem;

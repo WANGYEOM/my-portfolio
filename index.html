@@ -6,7 +6,12 @@ home: true
 
 <section class="home-hero">
   <div class="home-hero__bio text-focus-in">
-    <img class="home-hero__image" src="{{ '/assets/home/main_img.png' | relative_url }}" alt="Portrait of Matthew Kim">
+    <div class="home-hero__gallery" data-hero-gallery data-hero-images="{{ '/assets/home/hero/main_img.png' | relative_url }}">
+      <div class="home-hero__gallery-stack" aria-hidden="true"></div>
+      <div class="home-hero__gallery-main">
+        <img class="home-hero__image" src="{{ '/assets/home/hero/main_img.png' | relative_url }}" alt="Portrait of Matthew Kim" data-hero-gallery-main>
+      </div>
+    </div>
     <div class="home-hero__text">
       <p class="home-hero__headline fjalla-one-regular">
         Hello! I’m Matthew Kim Wan-Gyeom.

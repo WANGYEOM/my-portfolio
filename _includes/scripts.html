@@ -98,6 +98,39 @@
     const initialLang = langButtons.find((btn) => btn.classList.contains('is-active'))?.dataset.lang || 'en';
     setActiveLang(initialLang);
 
+    // Hero scatter gallery
+    const heroGallery = document.querySelector('[data-hero-gallery]');
+    if (heroGallery) {
+      const stack = heroGallery.querySelector('.home-hero__gallery-stack');
+      const mainImg = heroGallery.querySelector('[data-hero-gallery-main]');
+      const dataImages = heroGallery.dataset.heroImages
+        ? heroGallery.dataset.heroImages.split(',').map((src) => src.trim()).filter(Boolean)
+        : [];
+      const images = dataImages.length ? dataImages : (mainImg?.src ? [mainImg.src] : []);
+
+      if (stack && images.length) {
+        const fragment = document.createDocumentFragment();
+        const total = Math.min(images.length, 30);
+        for (let i = 0; i < total; i++) {
+          const src = images[i % images.length];
+          const img = new Image();
+          img.src = src;
+          const angle = Math.random() * Math.PI * 2;
+          const radius = 25 + Math.random() * 35; // percentage
+          const size = 20 + Math.random() * 14;
+          const left = 50 + Math.cos(angle) * radius;
+          const top = 50 + Math.sin(angle) * radius;
+          img.style.top = `${top}%`;
+          img.style.left = `${left}%`;
+          img.style.width = `${size}%`;
+          img.style.transform = `translate(-50%, -50%) rotate(${(-8 + Math.random() * 16).toFixed(1)}deg)`;
+          img.loading = 'lazy';
+          fragment.appendChild(img);
+        }
+        stack.appendChild(fragment);
+      }
+    }
+
     const closeWorksMenu = () => {
       if (!worksItem || !worksMenu) return;
       window.clearTimeout(hideMenuTimer);
