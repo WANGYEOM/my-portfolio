@@ -22,19 +22,23 @@ body {
 /* Home hero */
 .home-hero {
   margin: 0 auto;
-  padding: 80px 32px;
+  padding: 64px 32px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 32px;
   box-sizing: border-box;
 }
 
 .home-hero__bio {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   align-items: center;
+  justify-items: center;
   gap: 24px;
   color: #111;
+  max-width: 960px;
+  width: 100%;
 }
 
 .home-hero__intro {
@@ -44,7 +48,7 @@ body {
 }
 
 .home-hero__image {
-  width: min(360px, 60%);
+  width: min(280px, 60%);
   max-width: 100%;
   height: auto;
   display: block;
@@ -57,11 +61,87 @@ body {
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  line-height: 1.4;
+  line-height: 1.25;
+  text-align: center;
+  justify-items: center;
+}
+
+.home-hero__headline {
+  margin: 0;
+  font-size: 3rem;
+  padding-top: 1rem;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0;
+  justify-content: center;
+}
+
+.fjalla-one-regular {
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.1rem;
 }
 
 .home-hero__text p {
   margin: 0;
+}
+
+.home-hero__info {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: flex-start;
+  font: inherit;
+}
+
+.home-hero__info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.home-hero__tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: calc(100% + 12px);
+  width: min(400px, 60vw);
+  padding: 12px 16px;
+  background: #d9d9d9;
+  color: #111;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.01rem;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: bottom left;
+  transform: rotate3d(1, 1, 0, -80deg);
+  text-align: left;
+  z-index: 2;
+}
+
+.home-hero__info:hover .home-hero__tooltip,
+.home-hero__info:focus-visible .home-hero__tooltip {
+  opacity: 1;
+  animation: flip-in-diag-1-tr 0.3s ease both;
+  pointer-events: auto;
+}
+
+.home-hero__info:not(:hover):not(:focus-visible) .home-hero__tooltip {
+  animation: flip-out-diag-1-tr 0.25s ease both;
 }
 
 .highlight {
@@ -368,6 +448,9 @@ body {
 }
 
 @media (max-width: 900px) {
+  .home-hero__headline {
+    font-size: 2.5rem;
+  }
   .home-hero__text {
     font-size: 1.5rem;
   }
