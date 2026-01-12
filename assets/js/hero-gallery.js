@@ -7,7 +7,9 @@
   const dataImages = heroGallery.dataset.heroImages
     ? heroGallery.dataset.heroImages.split(',').map((src) => src.trim()).filter(Boolean)
     : [];
-  const images = dataImages.length ? dataImages : (mainImg?.src ? [mainImg.src] : []);
+  const normalizeSrc = (value) => encodeURI(value);
+  const images = (dataImages.length ? dataImages : (mainImg?.src ? [mainImg.src] : []))
+    .map((src) => normalizeSrc(src));
 
   if (!stack || !images.length) return;
 
@@ -89,6 +91,7 @@
   };
   updateDockParams();
 
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
   const updateDock = (pointerX) => {
     const influence = dockSize * 1.6;
     const push = dockSize * 0.12;
@@ -99,7 +102,8 @@
       const weight = Math.max(0, (influence - dist) / influence);
       const base = Number.parseFloat(img.dataset.restScale) || 1;
       const scale = base + weight * maxBoost;
-      const shift = Math.sign(center - pointerX) * weight * push;
+      const rawShift = Math.sign(center - pointerX) * weight * push;
+      const shift = isSafari ? Math.round(rawShift) : rawShift;
       setImageTransform(img, scale, shift);
       const depth = Math.round((influence - dist) * 10);
       img.style.zIndex = String(depth + index);
