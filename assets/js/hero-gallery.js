@@ -40,6 +40,9 @@
     img.className = 'hero-dock__image';
     img.dataset.restScale = '1';
     if (index === centerIndex) img.classList.add('is-center');
+    img.addEventListener('load', () => {
+      img.classList.add('is-loaded');
+    }, { once: true });
     fragment.appendChild(img);
     dockImages.push(img);
   });
@@ -89,7 +92,7 @@
   const updateDock = (pointerX) => {
     const influence = dockSize * 1.6;
     const push = dockSize * 0.12;
-    dockImages.forEach((img) => {
+    dockImages.forEach((img, index) => {
       const rect = img.getBoundingClientRect();
       const center = rect.left + rect.width / 2;
       const dist = Math.abs(pointerX - center);
@@ -98,7 +101,8 @@
       const scale = base + weight * maxBoost;
       const shift = Math.sign(center - pointerX) * weight * push;
       setImageTransform(img, scale, shift);
-      img.style.zIndex = String(Math.round(scale * 100));
+      const depth = Math.round((influence - dist) * 10);
+      img.style.zIndex = String(depth + index);
     });
   };
 
