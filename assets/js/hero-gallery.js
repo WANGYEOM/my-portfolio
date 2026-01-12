@@ -7,9 +7,7 @@
   const dataImages = heroGallery.dataset.heroImages
     ? heroGallery.dataset.heroImages.split(',').map((src) => src.trim()).filter(Boolean)
     : [];
-  const normalizeSrc = (value) => encodeURI(value);
-  const images = (dataImages.length ? dataImages : (mainImg?.src ? [mainImg.src] : []))
-    .map((src) => normalizeSrc(src));
+  const images = dataImages.length ? dataImages : (mainImg?.src ? [mainImg.src] : []);
 
   if (!stack || !images.length) return;
 
