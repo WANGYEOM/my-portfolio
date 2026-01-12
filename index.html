@@ -6,7 +6,8 @@ home: true
 
 <section class="home-hero">
   <div class="home-hero__bio text-focus-in">
-    <div class="home-hero__gallery" data-hero-gallery data-hero-images="{{ '/assets/home/hero/main_img.png' | relative_url }}">
+    {% assign hero_images = site.static_files | where_exp: "file", "file.path contains '/assets/home/hero/'" | where_exp: "file", "file.extname == '.png' or file.extname == '.jpg' or file.extname == '.jpeg'" %}
+    <div class="home-hero__gallery" data-hero-gallery data-hero-images="{% for file in hero_images %}{{ file.path | relative_url }}{% unless forloop.last %},{% endunless %}{% endfor %}">
       <div class="home-hero__gallery-stack" aria-hidden="true"></div>
       <div class="home-hero__gallery-main">
         <img class="home-hero__image" src="{{ '/assets/home/hero/main_img.png' | relative_url }}" alt="Portrait of Matthew Kim" data-hero-gallery-main>
@@ -45,53 +46,23 @@ home: true
   WORKS
 </div>
 <div class="content-grid">
-  <a href="{{ '/pages/immuone.html' | relative_url }}" class="item nav-link">
-    <div class="item-image">
-      <img src="{{ '/assets/immuone/immuone_thumbnail.jpg' | relative_url }}" alt="immuone" />
-    </div>
-    <p class="item-caption">immuone<span class="item-caption__meta">BRAND IDENTITY</span></p>
-  </a>
-  <a href="{{ '/pages/democracy.html' | relative_url }}" class="item nav-link">
-    <div class="item-image">
-      <img src="{{ '/assets/democracy/democracy_thumbnail.jpg' | relative_url }}" alt="민주인권기념관" />
-    </div>
-    <p class="item-caption">민주인권기념관 <span class="item-caption__meta">BRAND IDENTITY</span></p>
-  </a>
-  <a href="{{ '/pages/lego.html' | relative_url }}" class="item nav-link">
-    <div class="item-image">
-      <img src="{{ '/assets/lego/lego_poster-thumbnail.png' | relative_url }}" alt="LEGO" />
-    </div>
-    <p class="item-caption">LEGO <span class="item-caption__meta">POSITIONING PROMOTION</span></p>
-  </a>
-  <a href="{{ '/pages/sunbee.html' | relative_url }}" class="item nav-link">
-    <div class="item-image">
-      <img src="{{ '/assets/sunbee/sunbee_thumbnail1.png' | relative_url }}" alt="sunbee" />
-    </div>
-    <p class="item-caption">선비세상 <span class="item-caption__meta">SIGNAGE PLANNING / DESIGN</span></p>
-  </a>
-  <a href="https://www.behance.net/gallery/127285533/wellbuy-Corporate-Visual-Identity-Project" class="item nav-link" target="_blank" rel="noopener">
-    <div class="item-image">
-      <img src="{{ '/assets/project_01/project01.jpg' | relative_url }}" alt="wellbuy" />
-    </div>
-    <p class="item-caption">wellbuy <span class="item-caption__meta">CORPORATE IDENTITY</span></p>
-  </a>
-
-  <a href="{{ '/pages/tashu.html' | relative_url }}" class="item nav-link">
-    <div class="item-image">
-      <img src="{{ 'assets/tashu/Tashu_thumbnail.png' | relative_url }}" alt="Tashu" />
-    </div>
-    <p class="item-caption">Tashu <span class="item-caption__meta">REBRANDING / MOTIONS</span></p>
-  </a>
-  <a href="{{ '/pages/naming-process.html' | relative_url }}" class="item nav-link">
-    <div class="item-image">
-      <img src="{{ '/assets/naming-process/namingImages01.png' | relative_url }}" class="img-inner" alt="naming-process" />
-    </div>
-    <p class="item-caption">Naming Process <span class="item-caption__meta">BRAND NAMING</span></p>
-  </a>
-  <a href="{{ '/pages/suwon-hanok.html' | relative_url }}" class="item nav-link">
-    <div class="item-image">
-      <img src="{{ '/assets/suwon-hanok/main_signage.jpg' | relative_url }}" alt="수원한옥" />
-    </div>
-    <p class="item-caption">수원한옥 픽토그램 <span class="item-caption__meta">SIGNAGE DESIGN / PICTOGRAM</span></p>
-  </a>
+  {% assign home_works = site.data.works | where: "show_on_home", true | sort: "home_order" %}
+  {% for work in home_works %}
+    {% assign thumb_ext = work.thumbnail | split: '.' | last | downcase %}
+    <a href="{% if work.external_url %}{{ work.external_url }}{% else %}{{ work.url | relative_url }}{% endif %}" class="item nav-link"{% if work.external_url %} target="_blank" rel="noopener"{% endif %}>
+      <div class="item-image">
+        {% if thumb_ext == 'mp4' %}
+          <video autoplay muted loop playsinline preload="metadata" aria-label="{{ work.alt }}">
+            <source src="{{ work.thumbnail | relative_url }}" type="video/mp4">
+          </video>
+        {% else %}
+          <img src="{{ work.thumbnail | relative_url }}" alt="{{ work.alt }}" />
+        {% endif %}
+      </div>
+      <p class="item-caption">
+        {{ work.title }}
+        <span class="item-caption__meta">{{ work.meta }}</span>
+      </p>
+    </a>
+  {% endfor %}
 </div>

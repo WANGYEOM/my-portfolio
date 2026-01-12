@@ -1,0 +1,173 @@
+- id: immuone
+  title: immuone
+  url: /pages/immuone.html
+  tag: saas
+  show_in_nav: true
+  nav_order: 1
+  show_on_home: true
+  home_order: 1
+  thumbnail: /assets/immuone/immuone_thumbnail.jpg
+  meta: BRAND IDENTITY
+  alt: immuone
+
+- id: wellbuy
+  title: wellbuy
+  external_url: https://www.behance.net/gallery/127285533/wellbuy-Corporate-Visual-Identity-Project
+  tag: identity
+  show_in_nav: true
+  nav_order: 2
+  show_on_home: true
+  home_order: 6
+  thumbnail: /assets/project_01/project01.jpg
+  meta: CORPORATE IDENTITY
+  alt: wellbuy
+
+- id: democracy
+  title: 민주인권기념관
+  lang: ko
+  url: /pages/democracy.html
+  tag: identity
+  show_in_nav: true
+  nav_order: 3
+  show_on_home: true
+  home_order: 2
+  thumbnail: /assets/democracy/democracy_thumbnail.jpg
+  meta: BRAND IDENTITY
+  alt: 민주인권기념관
+
+- id: suwon-hanok
+  title: 수원한옥
+  lang: ko
+  url: /pages/suwon-hanok.html
+  tag: pictogram
+  show_in_nav: true
+  nav_order: 4
+  show_on_home: true
+  home_order: 9
+  thumbnail: /assets/suwon-hanok/main_signage.jpg
+  meta: SIGNAGE DESIGN / PICTOGRAM
+  alt: 수원한옥
+
+- id: lego
+  title: LEGO
+  url: /pages/lego.html
+  tag: editorial
+  show_in_nav: true
+  nav_order: 6
+  show_on_home: true
+  home_order: 4
+  thumbnail: /assets/lego/lego_poster-thumbnail.png
+  meta: POSITIONING PROMOTION
+  alt: LEGO
+
+- id: custom-my-tsing
+  title: Custom My Tsing
+  external_url: https://www.behance.net/gallery/169832001/Tsingtao-Beer-UX-Custom-my-Tsing
+  tag: web
+  show_in_nav: true
+  nav_order: 5
+  show_on_home: true
+  home_order: 3
+  thumbnail: /assets/custom-my-tsing/custom-my-tsing_thumbnail.mp4
+  meta: VISUAL IDENTITY
+  alt: Custom My Tsing
+
+- id: sunbee
+  title: 선비세상
+  lang: ko
+  url: /pages/sunbee.html
+  tag: signage
+  show_in_nav: true
+  nav_order: 7
+  show_on_home: true
+  home_order: 5
+  thumbnail: /assets/sunbee/sunbee_thumbnail1.png
+  meta: SIGNAGE PLANNING / DESIGN
+  alt: sunbee
+
+- id: tashu
+  title: Tashu
+  url: /pages/tashu.html
+  tag: UI
+  show_in_nav: true
+  nav_order: 8
+  show_on_home: true
+  home_order: 7
+  thumbnail: /assets/tashu/Tashu_thumbnail.png
+  meta: REBRANDING / MOTIONS
+  alt: Tashu
+
+- id: shanghai
+  title: Shanghai
+  url: /pages/shanghai-branding.html
+  tag: city branding
+  show_in_nav: true
+  nav_order: 9
+  show_on_home: false
+
+- id: loop
+  title: Loop
+  external_url: https://www.behance.net/gallery/128768145/Loop-Jeju-Transportation
+  tag: transportation
+  show_in_nav: true
+  nav_order: 10
+  show_on_home: false
+
+- id: naming
+  title: Naming
+  url: /pages/naming-process.html
+  tag: thesis
+  show_in_nav: true
+  nav_order: 11
+  show_on_home: true
+  home_order: 8
+  thumbnail: /assets/naming-process/namingImages01.png
+  meta: BRAND NAMING
+  alt: naming-process
+
+- id: typography-note
+  note: true
+  label: "**"
+  tag: typography
+  show_in_nav: true
+  nav_order: 12
+
+- id: golden-record
+  title: The Golden Record
+  url: /pages/golden-record.html
+  category: misc
+  show_in_misc: true
+  misc_order: 1
+  thumbnail: /assets/golden-record/golden_spread-thumbnail.png
+  meta: NASA Outreach brochure
+  alt: The Golden Record 1
+
+- id: alrt-2022
+  title: ALRT 2022
+  url: /pages/alrt-2022.html
+  category: misc
+  show_in_misc: true
+  misc_order: 2
+  thumbnail: /assets/alrt-2022/alrt-thumbnail.jpg
+  meta: Conference Graphic
+  alt: ALRT 2022
+
+- id: report-simple
+  title: 보고·회의는 간결하게
+  url: /pages/report-simple.html
+  category: misc
+  show_in_misc: true
+  misc_order: 3
+  thumbnail: /assets/report-simple/report-simple_thumbnail.png
+  meta: Campaign Design
+  alt: Report Simple
+
+- id: absolut-shanghai
+  title: ABSOLUT SHANGHAI
+  url: /pages/absolut-shanghai.html
+  category: misc
+  show_in_misc: true
+  misc_order: 4
+  thumbnail: /assets/absolut-shanghai/absolut_thumbnail.png
+  meta: Social Media Campaign
+  alt: ABSOLUT SHANGHAI
