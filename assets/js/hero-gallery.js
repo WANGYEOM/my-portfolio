@@ -4,105 +4,162 @@
 
   const stack = heroGallery.querySelector('.home-hero__gallery-stack');
   const mainImg = heroGallery.querySelector('[data-hero-gallery-main]');
-  const dataImages = heroGallery.dataset.heroImages
-    ? heroGallery.dataset.heroImages.split(',').map((src) => src.trim()).filter(Boolean)
-    : [];
-  const images = dataImages.length ? dataImages : (mainImg?.src ? [mainImg.src] : []);
+  const dataItems = heroGallery.querySelectorAll('[data-hero-items] [data-src]');
+  let heroItems = [];
 
-  if (!stack || !images.length) return;
+  if (dataItems.length) {
+    heroItems = Array.from(dataItems).map((node) => ({
+      src: node.dataset.src,
+      href: node.dataset.href || null,
+      external: node.dataset.external === 'true'
+    })).filter((item) => item && item.src);
+  }
+
+  if (!heroItems.length) {
+    const dataImages = heroGallery.dataset.heroImages
+      ? heroGallery.dataset.heroImages.split(',').map((src) => src.trim()).filter(Boolean)
+      : [];
+    const images = dataImages.length ? dataImages : (mainImg?.src ? [mainImg.src] : []);
+    heroItems = images.map((src) => ({ src }));
+  }
+
+  if (!stack || !heroItems.length) return;
 
   stack.innerHTML = '';
   const fragment = document.createDocumentFragment();
   const dockImages = [];
+  const dockItems = [];
 
-  const orderedImages = images.slice();
-  const preferredIndex = orderedImages.findIndex((src) => src.includes('main_img.png'));
+  const maxBoost = 0.6;
+  const baseScale = 1 / (1 + maxBoost);
+  stack.style.setProperty('--dock-base-scale', baseScale);
+  const orderedItems = heroItems.slice();
+  const preferredIndex = orderedItems.findIndex((item) => item.src.includes('main_img.png'));
   let preferred = null;
   if (preferredIndex > -1) {
-    preferred = orderedImages.splice(preferredIndex, 1)[0];
+    preferred = orderedItems.splice(preferredIndex, 1)[0];
   }
-  for (let i = orderedImages.length - 1; i > 0; i--) {
+  for (let i = orderedItems.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [orderedImages[i], orderedImages[j]] = [orderedImages[j], orderedImages[i]];
+    [orderedItems[i], orderedItems[j]] = [orderedItems[j], orderedItems[i]];
   }
   if (preferred) {
-    const insertAt = Math.floor(orderedImages.length / 2);
-    orderedImages.splice(insertAt, 0, preferred);
+    const insertAt = Math.floor(orderedItems.length / 2);
+    orderedItems.splice(insertAt, 0, preferred);
   }
-  const centerIndex = Math.floor(orderedImages.length / 2);
+  const centerIndex = Math.floor(orderedItems.length / 2);
 
-  orderedImages.forEach((src, index) => {
+  orderedItems.forEach((item, index) => {
+    const wrapper = item.href ? document.createElement('a') : document.createElement('div');
+    wrapper.className = 'hero-dock__item';
+    if (item.href) {
+      wrapper.classList.add('is-link');
+      wrapper.href = item.href;
+      if (item.external) {
+        wrapper.target = '_blank';
+        wrapper.rel = 'noopener';
+      }
+    } else {
+      wrapper.classList.add('is-static');
+      wrapper.tabIndex = 0;
+      wrapper.setAttribute('aria-label', 'In progress');
+    }
+
     const img = new Image();
-    img.src = src;
+    img.src = item.src;
     img.alt = '';
     img.decoding = 'async';
     img.loading = index === centerIndex ? 'eager' : 'lazy';
     img.className = 'hero-dock__image';
-    img.dataset.restScale = '1';
+    img.dataset.restScale = String(baseScale);
     if (index === centerIndex) img.classList.add('is-center');
     img.addEventListener('load', () => {
-      img.classList.add('is-loaded');
+      wrapper.classList.add('is-loaded');
     }, { once: true });
-    fragment.appendChild(img);
+    if (img.complete) {
+      wrapper.classList.add('is-loaded');
+    }
+    wrapper.appendChild(img);
+    if (!item.href) {
+      const tooltip = document.createElement('span');
+      tooltip.className = 'hero-dock__tooltip';
+      tooltip.textContent = 'In progress';
+      wrapper.appendChild(tooltip);
+    }
+    fragment.appendChild(wrapper);
     dockImages.push(img);
+    dockItems.push(wrapper);
   });
 
   stack.appendChild(fragment);
   heroGallery.classList.add('is-ready');
 
-  const setImageTransform = (img, scale, shiftX) => {
-    img.style.transform = `translate3d(${shiftX}px, 0, 0) scale(${scale})`;
+  const setImageTransform = (item, scale, shiftX) => {
+    item.style.transform = `translate3d(${shiftX}px, 0, 0) scale(${scale})`;
   };
 
   const updateOverlap = () => {
-    if (dockImages.length < 2) return;
+    if (dockItems.length < 2) return;
     const sizeValue = parseFloat(getComputedStyle(stack).getPropertyValue('--dock-size')) || 200;
+    const scaledSize = sizeValue * baseScale;
     const width = stack.clientWidth || heroGallery.clientWidth;
-    const totalWidth = dockImages.length * sizeValue;
+    const totalWidth = dockItems.length * scaledSize;
     let overlap = 0;
-    if (totalWidth > width && width > 0) {
-      overlap = (totalWidth - width) / (dockImages.length - 1);
+    if (width > 0) {
+      overlap = (totalWidth - width) / (dockItems.length - 1);
     }
-    overlap = Math.min(Math.max(overlap, 0), sizeValue * 0.9);
+    if (overlapMode === 'auto') {
+      overlap += scaledSize * 0.08;
+    }
+    overlap = Math.min(Math.max(overlap, -scaledSize * 0.9), scaledSize * 0.9);
     stack.style.setProperty('--dock-overlap', `${overlap.toFixed(2)}px`);
   };
 
   const resetDock = () => {
-    dockImages.forEach((img) => {
-      const base = Number.parseFloat(img.dataset.restScale) || 1;
-      setImageTransform(img, base, 0);
-      img.style.zIndex = '1';
+    dockItems.forEach((item, index) => {
+      const img = dockImages[index];
+      const base = Number.parseFloat(img.dataset.restScale) || baseScale;
+      setImageTransform(item, base, 0);
+      item.style.zIndex = '1';
     });
   };
 
   const canHover = window.matchMedia('(hover: hover)').matches;
-  if (canHover) {
+  const overlapMode = stack.dataset.overlapMode || 'manual';
+  if (overlapMode === 'auto') {
     updateOverlap();
   }
   resetDock();
 
   let dockSize = 200;
-  const maxBoost = 0.6;
   const updateDockParams = () => {
     const sizeValue = parseFloat(getComputedStyle(stack).getPropertyValue('--dock-size'));
     dockSize = Number.isFinite(sizeValue) ? sizeValue : 200;
   };
   updateDockParams();
+  const getDockOverlap = () => {
+    const overlapValue = parseFloat(getComputedStyle(stack).getPropertyValue('--dock-overlap'));
+    return Number.isFinite(overlapValue) ? overlapValue : 0;
+  };
 
   const updateDock = (pointerX) => {
-    const influence = dockSize * 1.6;
-    const push = dockSize * 0.12;
-    dockImages.forEach((img, index) => {
-      const rect = img.getBoundingClientRect();
+    const overlap = getDockOverlap();
+    const spacing = Math.max(dockSize - overlap, dockSize * 0.2);
+    const influence = spacing * 1.5;
+    const push = dockSize * 0.02;
+    dockItems.forEach((item, index) => {
+      const img = dockImages[index];
+      const rect = item.getBoundingClientRect();
       const center = rect.left + rect.width / 2;
       const dist = Math.abs(pointerX - center);
-      const weight = Math.max(0, (influence - dist) / influence);
-      const base = Number.parseFloat(img.dataset.restScale) || 1;
-      const scale = base + weight * maxBoost;
+      const t = Math.min(dist / influence, 1);
+      const weight = Math.cos(t * Math.PI * 0.5) ** 2;
+      const base = Number.parseFloat(img.dataset.restScale) || baseScale;
+      const scale = base + weight * (1 - base);
       const shift = Math.sign(center - pointerX) * weight * push;
-      setImageTransform(img, scale, shift);
+      setImageTransform(item, scale, shift);
       const depth = Math.round((influence - dist) * 10);
-      img.style.zIndex = String(depth + index);
+      item.style.zIndex = String(depth + index);
     });
   };
 
@@ -132,7 +189,7 @@
     };
 
     const setPointerToCenter = () => {
-      const centerImg = dockImages[centerIndex];
+      const centerImg = dockItems[centerIndex];
       if (!centerImg) return;
       const rect = centerImg.getBoundingClientRect();
       const center = rect.left + rect.width / 2;
@@ -154,7 +211,9 @@
     });
 
     window.addEventListener('resize', () => {
-      updateOverlap();
+      if (overlapMode === 'auto') {
+        updateOverlap();
+      }
       updateDockParams();
       if (currentX !== null) requestUpdate();
     });
@@ -164,7 +223,7 @@
     let scrollRaf = null;
     let hasCentered = false;
     const setScrollToCenter = () => {
-      const centerImg = dockImages[centerIndex];
+      const centerImg = dockItems[centerIndex];
       if (!centerImg) return;
       const galleryRect = heroGallery.getBoundingClientRect();
       const imgRect = centerImg.getBoundingClientRect();

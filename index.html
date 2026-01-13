@@ -6,9 +6,20 @@ home: true
 
 <section class="home-hero">
   <div class="home-hero__bio text-focus-in">
-    {% assign hero_images = site.static_files | where_exp: "file", "file.path contains '/assets/home/hero/'" | where_exp: "file", "file.extname == '.png'" %}
-    <div class="home-hero__gallery" data-hero-gallery data-hero-images="{% for file in hero_images %}{{ file.path | relative_url }}{% unless forloop.last %},{% endunless %}{% endfor %}">
-      <div class="home-hero__gallery-stack" aria-hidden="true"></div>
+    <div class="home-hero__gallery" data-hero-gallery>
+      <div class="home-hero__gallery-data" data-hero-items hidden>
+        {% for item in site.data['hero-images'] %}
+          <div
+            class="hero-item"
+            data-src="{{ item.src | relative_url }}"
+            {% if item.href %}
+              data-href="{% if item.external %}{{ item.href }}{% else %}{{ item.href | relative_url }}{% endif %}"
+            {% endif %}
+            {% if item.external %}data-external="true"{% endif %}
+          ></div>
+        {% endfor %}
+      </div>
+      <div class="home-hero__gallery-stack" data-overlap-mode="auto" aria-hidden="true"></div>
       <div class="home-hero__gallery-main">
         <img class="home-hero__image" src="{{ '/assets/home/hero/main_img.png' | relative_url }}" alt="Portrait of Matthew Kim" data-hero-gallery-main>
       </div>
