@@ -89,7 +89,6 @@
   };
   updateDockParams();
 
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
   const updateDock = (pointerX) => {
     const influence = dockSize * 1.6;
     const push = dockSize * 0.12;
@@ -100,8 +99,7 @@
       const weight = Math.max(0, (influence - dist) / influence);
       const base = Number.parseFloat(img.dataset.restScale) || 1;
       const scale = base + weight * maxBoost;
-      const rawShift = Math.sign(center - pointerX) * weight * push;
-      const shift = isSafari ? Math.round(rawShift) : rawShift;
+      const shift = Math.sign(center - pointerX) * weight * push;
       setImageTransform(img, scale, shift);
       const depth = Math.round((influence - dist) * 10);
       img.style.zIndex = String(depth + index);
